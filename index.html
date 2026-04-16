@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>2026年四季回顧紀錄</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
 <style>
 :root{--bg:#ffffff;--bg2:#f5f4f0;--bg3:#eeecea;--text:#1a1a1a;--text2:#6b6b6b;--text3:#9a9a9a;--border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);--purple:#534AB7;--purple-light:#EEEDFE;--purple-dark:#3C3489;--radius:10px;--radius-sm:6px;}
 @media(prefers-color-scheme:dark){:root{--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;--text:#f2f2f7;--text2:#aeaeb2;--text3:#636366;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--purple-light:#2a2560;}}
@@ -427,7 +428,7 @@ let currentQ='Q1';
 function qState(){return window._appState[currentQ];}
 function saveState(){window._saveToFirebase();}
 
-window.renderAll=function(){renderEvents();renderEventSel();renderDashboard();renderNextQ();};
+window.renderAll=function(){renderEvents();renderEventSel();renderDashboard();renderNextQ();setTimeout(initSortable,80);};
 const Q_LABELS={Q1:'Q1 1-3月',Q2:'Q2 4-6月',Q3:'Q3 7-9月',Q4:'Q4 10-12月'};
 
 function switchQuarter(q){
@@ -748,17 +749,4 @@ function destroySortable(){
 buildCatTags();
 </script>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
-<script>
-// Init sortable after SortableJS loads
-document.addEventListener('DOMContentLoaded', ()=>{
-  // SortableJS ready, will be inited when events render
-});
-// patch renderEvents to call initSortable after DOM update
-const _origRenderAll = window.renderAll;
-window.renderAll = function(){
-  _origRenderAll();
-  setTimeout(initSortable, 50);
-};
-</script>
 </html>
