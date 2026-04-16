@@ -55,7 +55,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .quarter-selector{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .quarter-btn{padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
 .quarter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;}
-.event-item{background:var(--bg);border-radius:var(--radius);margin-bottom:10px;border:0.5px solid var(--border);overflow:hidden;}
+.event-item{background:var(--bg);border-radius:var(--radius);margin-bottom:10px;border:0.5px solid var(--border);overflow:hidden;transition:box-shadow 0.15s;}
+.event-item.sortable-chosen{box-shadow:0 4px 16px rgba(0,0,0,0.15);opacity:0.95;}
+.event-item.sortable-ghost{opacity:0.3;}
+.drag-handle{color:var(--text3);cursor:grab;padding:4px 8px 4px 4px;font-size:16px;line-height:1;flex-shrink:0;touch-action:none;}
+.drag-handle:active{cursor:grabbing;}
 .event-header{padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start;}
 .event-title-text{font-size:15px;font-weight:500;}
 .event-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;align-items:center;}
@@ -582,11 +586,12 @@ function cancelEdit(i){document.getElementById(`edit-form-${i}`)?.classList.remo
 function renderEvents(){
   const el=document.getElementById('event-list');
   const events=Array.isArray(qState().events)?qState().events:[];
-  if(!events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
+  if(!events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';destroySortable();return;}
   el.innerHTML=events.map((ev,i)=>{
     const c=catByName(ev.cat);
-    return`<div class="event-item">
+    return`<div class="event-item" data-idx="${i}">
       <div class="event-header">
+        <div class="drag-handle" title="拖曳排序">⠿</div>
         <div style="flex:1;">
           <div class="event-title-text">${ev.title}</div>
           <div class="event-meta">
@@ -699,7 +704,61 @@ function showSection(name,btn){
   if(name==='dashboard')renderDashboard();
   window.scrollTo(0,0);
 }
+// ── Drag & Drop (SortableJS) ──────────────────────────────────────
+let sortableInstance = null;
+function initSortable(){
+  destroySortable();
+  const el = document.getElementById('event-list');
+  if(!el || !window.Sortable) return;
+  sortableInstance = Sortable.create(el, {
+    handle: '.drag-handle',
+    animation: 150,
+    ghostClass: 'sortable-ghost',
+    chosenClass: 'sortable-chosen',
+    onEnd: (evt) => {
+      const oldIdx = evt.oldIndex;
+      const newIdx = evt.newIndex;
+      if (oldIdx === newIdx) return;
+      const events = qState().events;
+      const moved = events.splice(oldIdx, 1)[0];
+      events.splice(newIdx, 0, moved);
+      // remap breakdowns
+      const bd = qState().breakdowns || {};
+      const keys = Object.keys(bd).map(Number);
+      const newBd = {};
+      keys.forEach(k => {
+        let newK = k;
+        if (k === oldIdx) newK = newIdx;
+        else if (oldIdx < newIdx && k > oldIdx && k <= newIdx) newK = k - 1;
+        else if (oldIdx > newIdx && k < oldIdx && k >= newIdx) newK = k + 1;
+        newBd[newK] = bd[k];
+      });
+      qState().breakdowns = newBd;
+      saveState();
+      renderEvents();
+      renderEventSel();
+      renderDashboard();
+    }
+  });
+}
+function destroySortable(){
+  if(sortableInstance){ try{ sortableInstance.destroy(); }catch(e){} sortableInstance=null; }
+}
+
 buildCatTags();
 </script>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+<script>
+// Init sortable after SortableJS loads
+document.addEventListener('DOMContentLoaded', ()=>{
+  // SortableJS ready, will be inited when events render
+});
+// patch renderEvents to call initSortable after DOM update
+const _origRenderAll = window.renderAll;
+window.renderAll = function(){
+  _origRenderAll();
+  setTimeout(initSortable, 50);
+};
+</script>
 </html>
