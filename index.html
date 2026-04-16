@@ -6,36 +6,27 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>2026年四季回顧紀錄</title>
 <style>
-:root {
-  --bg:#ffffff;--bg2:#f5f4f0;--bg3:#eeecea;
-  --text:#1a1a1a;--text2:#6b6b6b;--text3:#9a9a9a;
-  --border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);
-  --purple:#534AB7;--purple-light:#EEEDFE;--purple-dark:#3C3489;
-  --radius:10px;--radius-sm:6px;
-}
-@media(prefers-color-scheme:dark){
-  :root{--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;--text:#f2f2f7;--text2:#aeaeb2;--text3:#636366;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--purple-light:#2a2560;}
-}
+:root{--bg:#ffffff;--bg2:#f5f4f0;--bg3:#eeecea;--text:#1a1a1a;--text2:#6b6b6b;--text3:#9a9a9a;--border:rgba(0,0,0,0.12);--border2:rgba(0,0,0,0.22);--purple:#534AB7;--purple-light:#EEEDFE;--purple-dark:#3C3489;--radius:10px;--radius-sm:6px;}
+@media(prefers-color-scheme:dark){:root{--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;--text:#f2f2f7;--text2:#aeaeb2;--text3:#636366;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--purple-light:#2a2560;}}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
 .app{max-width:600px;margin:0 auto;padding:0 0 80px;}
 .header{background:var(--bg);padding:16px 20px 12px;border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100;}
-.header-title{font-size:17px;font-weight:600;color:var(--text);}
+.header-title{font-size:17px;font-weight:600;}
 .header-sub{font-size:12px;color:var(--text3);margin-top:2px;}
 .header-user{font-size:11px;color:var(--purple);margin-top:3px;display:flex;align-items:center;gap:8px;}
-.btn-signout{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;}
+.btn-signout{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;text-decoration:underline;}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-top:0.5px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;cursor:pointer;gap:3px;border:none;background:none;color:var(--text3);font-size:10px;}
 .nav-item.active{color:var(--purple);}
 .nav-icon{font-size:20px;line-height:1;}
-.section{display:none;padding:16px 16px 0;}
-.section.active{display:block;}
-.section-title{font-size:16px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.section{display:none;padding:16px 16px 0;}.section.active{display:block;}
+.section-title{font-size:16px;font-weight:600;margin-bottom:4px;}
 .section-sub{font-size:13px;color:var(--text2);margin-bottom:16px;}
 .card{background:var(--bg);border-radius:var(--radius);padding:16px;margin-bottom:12px;border:0.5px solid var(--border);}
 .label{font-size:13px;color:var(--text2);margin-bottom:6px;display:block;}
 .label-hint{font-size:11px;color:var(--text3);margin-left:5px;}
-input[type=text],input[type=date],select,textarea{width:100%;padding:10px 12px;border:0.5px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg2);color:var(--text);font-size:15px;outline:none;-webkit-appearance:none;appearance:none;font-family:inherit;}
+input[type=text],input[type=date],select,textarea{width:100%;padding:10px 12px;border:0.5px solid var(--border2);border-radius:var(--radius-sm);background:var(--bg2);color:var(--text);font-size:15px;outline:none;-webkit-appearance:none;font-family:inherit;}
 input[type=date]{font-size:14px;}
 input:focus,select:focus,textarea:focus{border-color:var(--purple);}
 textarea{resize:vertical;min-height:72px;line-height:1.5;}
@@ -46,8 +37,7 @@ textarea{resize:vertical;min-height:72px;line-height:1.5;}
 .toggle-btn:last-child{border-right:none;}
 .toggle-btn.active{background:var(--purple);color:#fff;font-weight:500;}
 .date-block{display:none;}.date-block.active{display:block;}
-.date-range-row{display:flex;align-items:center;gap:8px;}
-.date-range-row input{flex:1;}
+.date-range-row{display:flex;align-items:center;gap:8px;}.date-range-row input{flex:1;}
 .date-sep{font-size:13px;color:var(--text3);flex-shrink:0;}
 .date-preview{margin-top:6px;font-size:12px;min-height:16px;}
 .date-preview span{background:var(--purple-light);color:var(--purple);padding:1px 8px;border-radius:8px;}
@@ -56,10 +46,9 @@ textarea{resize:vertical;min-height:72px;line-height:1.5;}
 .energy-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
 input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--bg3);outline:none;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--purple);cursor:pointer;}
-.energy-val{font-size:16px;font-weight:600;color:var(--text);min-width:18px;text-align:center;}
+.energy-val{font-size:16px;font-weight:600;min-width:18px;text-align:center;}
 .energy-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:14px;}
 .btn{padding:12px 20px;border-radius:var(--radius-sm);cursor:pointer;font-size:15px;font-family:inherit;border:none;width:100%;font-weight:500;}
-.btn:active{opacity:0.75;}
 .btn-primary{background:var(--purple);color:#fff;}
 .btn-ghost{background:var(--bg2);color:var(--text2);border:0.5px solid var(--border2);}
 .btn-sm{padding:7px 14px;font-size:13px;border-radius:var(--radius-sm);cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
@@ -68,7 +57,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .quarter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;}
 .event-item{background:var(--bg);border-radius:var(--radius);margin-bottom:10px;border:0.5px solid var(--border);overflow:hidden;}
 .event-header{padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start;}
-.event-title-text{font-size:15px;font-weight:500;color:var(--text);}
+.event-title-text{font-size:15px;font-weight:500;}
 .event-meta{display:flex;flex-wrap:wrap;gap:5px;margin-top:5px;align-items:center;}
 .badge-main{padding:2px 9px;border-radius:10px;font-size:11px;font-weight:500;}
 .badge-sub{padding:1px 7px;border-radius:10px;font-size:10px;border:0.5px solid;}
@@ -81,7 +70,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .edit-actions .btn{width:auto;padding:10px 18px;}
 .val-tag{padding:5px 11px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);display:inline-flex;align-items:center;gap:3px;font-family:inherit;}
 .val-tag.sel{background:var(--purple-light);color:var(--purple-dark);border-color:var(--purple);}
-.val-del{font-size:10px;opacity:0.3;line-height:1;background:none;border:none;padding:0;margin:0;color:inherit;cursor:pointer;-webkit-appearance:none;}
+.val-del{font-size:10px;opacity:0.3;line-height:1;background:none;border:none;padding:0;margin:0;color:inherit;cursor:pointer;}
 .val-del:hover{opacity:0.75;}
 .add-val-row{display:flex;gap:8px;align-items:center;margin-top:8px;}
 .add-val-row input{flex:1;margin-bottom:0;}
@@ -91,11 +80,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .phase-tab.p-before.active{background:#fff8e0;color:#7a5800;font-weight:500;}
 .phase-tab.p-during.active{background:#fde8e8;color:#7a2020;font-weight:500;}
 .phase-tab.p-after.active{background:#e8f5e8;color:#1a5a1a;font-weight:500;}
-@media(prefers-color-scheme:dark){
-  .phase-tab.p-before.active{background:#3a3000;color:#f0c040;}
-  .phase-tab.p-during.active{background:#3a1010;color:#f08080;}
-  .phase-tab.p-after.active{background:#0a2a0a;color:#60c060;}
-}
+@media(prefers-color-scheme:dark){.phase-tab.p-before.active{background:#3a3000;color:#f0c040;}.phase-tab.p-during.active{background:#3a1010;color:#f08080;}.phase-tab.p-after.active{background:#0a2a0a;color:#60c060;}}
 .phase-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;vertical-align:middle;}
 .phase-count{display:inline-block;margin-left:4px;font-size:11px;background:rgba(0,0,0,0.12);border-radius:8px;padding:0 5px;}
 .phase-hint{font-size:12px;color:var(--text3);text-align:center;margin-bottom:8px;}
@@ -116,7 +101,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .flow-empty{font-size:12px;color:var(--text3);text-align:center;padding:4px 0;}
 .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px;}
 .stat-card{background:var(--bg);border-radius:var(--radius-sm);padding:12px;border:0.5px solid var(--border);}
-.stat-num{font-size:22px;font-weight:600;color:var(--text);}
+.stat-num{font-size:22px;font-weight:600;}
 .stat-lbl{font-size:11px;color:var(--text2);margin-top:2px;}
 .viz-box{background:var(--bg);border-radius:var(--radius);padding:14px;margin-bottom:12px;border:0.5px solid var(--border);}
 .viz-title{font-size:13px;font-weight:500;color:var(--text2);margin-bottom:10px;}
@@ -138,34 +123,26 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .next-dot{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;}
 .empty-hint{font-size:13px;color:var(--text3);padding:8px 0;}
 .save-msg{font-size:12px;color:#0F6E56;margin-left:10px;display:none;}
-
-/* Login screen */
+.sync-indicator{font-size:11px;color:var(--text3);}
+.sync-indicator.syncing{color:var(--purple);}
+.sync-indicator.error{color:#E24B4A;}
 #login-screen{position:fixed;inset:0;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:200;padding:2rem;}
 .login-card{background:var(--bg);border-radius:var(--radius);padding:2rem;max-width:320px;width:100%;text-align:center;border:0.5px solid var(--border);}
-.login-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.login-title{font-size:20px;font-weight:600;margin-bottom:8px;}
 .login-sub{font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.5;}
 .btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;border-radius:var(--radius-sm);border:0.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;}
 .btn-google:hover{background:var(--bg2);}
 .btn-google svg{width:20px;height:20px;flex-shrink:0;}
-.sync-indicator{font-size:11px;color:var(--text3);margin-top:4px;}
-.sync-indicator.syncing{color:var(--purple);}
-.sync-indicator.error{color:#E24B4A;}
 </style>
 </head>
 <body>
 
-<!-- Login Screen -->
 <div id="login-screen">
   <div class="login-card">
     <div class="login-title">2026年四季回顧</div>
     <div class="login-sub">登入後，你的資料會自動在所有裝置上同步</div>
     <button class="btn-google" onclick="signInWithGoogle()">
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-      </svg>
+      <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
       使用 Google 帳號登入
     </button>
     <div id="login-status" style="font-size:12px;color:var(--text3);margin-top:12px;min-height:16px;"></div>
@@ -203,11 +180,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       </div>
       <div class="date-block active" id="block-single"><input type="date" id="date-single" oninput="updateDatePreview('')" /></div>
       <div class="date-block" id="block-range">
-        <div class="date-range-row">
-          <input type="date" id="date-from" oninput="updateDatePreview('')" />
-          <span class="date-sep">→</span>
-          <input type="date" id="date-to" oninput="updateDatePreview('')" />
-        </div>
+        <div class="date-range-row"><input type="date" id="date-from" oninput="updateDatePreview('')" /><span class="date-sep">→</span><input type="date" id="date-to" oninput="updateDatePreview('')" /></div>
       </div>
       <div class="date-preview field-mb" id="date-preview"></div>
       <div class="divider"></div>
@@ -217,10 +190,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
       <div class="tag-row" id="cat-sub-tags"></div>
       <div class="divider"></div>
       <span class="label">投入程度</span>
-      <div class="energy-row">
-        <input type="range" id="ev-energy" min="1" max="5" value="3" step="1" oninput="document.getElementById('ev-energy-val').textContent=this.value" />
-        <span class="energy-val" id="ev-energy-val">3</span>
-      </div>
+      <div class="energy-row"><input type="range" id="ev-energy" min="1" max="5" value="3" step="1" oninput="document.getElementById('ev-energy-val').textContent=this.value" /><span class="energy-val" id="ev-energy-val">3</span></div>
       <div class="energy-labels"><span>輕輕帶過</span><span>傾盡全力</span></div>
       <span class="label">備注（可選）</span>
       <textarea id="ev-note" class="field-mb" placeholder="當時發生了什麼？和誰？"></textarea>
@@ -263,10 +233,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
         <textarea id="bd-why" class="field-mb" placeholder="是什麼讓你決定投入這件事？"></textarea>
         <span class="label">這呈現了我的什麼價值或需求？<span class="label-hint">可多選，也可自行新增</span></span>
         <div class="tag-row" id="value-tags"></div>
-        <div class="add-val-row">
-          <input type="text" id="new-val-input" placeholder="輸入自訂價值或需求..." maxlength="12" />
-          <button class="btn-sm" onclick="addCustomVal()">+ 新增</button>
-        </div>
+        <div class="add-val-row"><input type="text" id="new-val-input" placeholder="輸入自訂價值或需求..." maxlength="12" /><button class="btn-sm" onclick="addCustomVal()">+ 新增</button></div>
         <span class="label" style="margin-top:14px;">這件事我想...</span>
         <div class="tag-row" id="continue-tags">
           <div class="tag" onclick="selContTag(this)">繼續做</div>
@@ -296,10 +263,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     <div class="viz-box">
       <div class="viz-title">情緒象限分布</div>
       <div class="q-grid">
-        <div class="q-box" style="background:#ffcccc;"><div class="q-num" style="color:#7a2020;" id="q-HL">0</div><div class="q-lbl" style="color:#7a2020;">高活力 × 低愉悅</div></div>
-        <div class="q-box" style="background:#fff3a0;"><div class="q-num" style="color:#7a6000;" id="q-HH">0</div><div class="q-lbl" style="color:#7a6000;">高活力 × 高愉悅</div></div>
-        <div class="q-box" style="background:#c8eec8;"><div class="q-num" style="color:#2a5a2a;" id="q-LH">0</div><div class="q-lbl" style="color:#2a5a2a;">低活力 × 高愉悅</div></div>
-        <div class="q-box" style="background:#d8d8f8;"><div class="q-num" style="color:#3a3a80;" id="q-LL">0</div><div class="q-lbl" style="color:#3a3a80;">低活力 × 低愉悅</div></div>
+        <div class="q-box" style="background:#ffcccc;"><div class="q-num" style="color:#7a2020;" id="q-HL">0</div><div class="q-lbl" style="color:#7a2020;">高活力×低愉悅</div></div>
+        <div class="q-box" style="background:#fff3a0;"><div class="q-num" style="color:#7a6000;" id="q-HH">0</div><div class="q-lbl" style="color:#7a6000;">高活力×高愉悅</div></div>
+        <div class="q-box" style="background:#c8eec8;"><div class="q-num" style="color:#2a5a2a;" id="q-LH">0</div><div class="q-lbl" style="color:#2a5a2a;">低活力×高愉悅</div></div>
+        <div class="q-box" style="background:#d8d8f8;"><div class="q-num" style="color:#3a3a80;" id="q-LL">0</div><div class="q-lbl" style="color:#3a3a80;">低活力×低愉悅</div></div>
       </div>
     </div>
     <div class="viz-box"><div class="viz-title">最常呼喚的價值觀</div><div class="kw-cloud" id="value-cloud"></div></div>
@@ -319,15 +286,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     <div class="next-col" style="background:#E1F5EE;border-color:#9FE1CB;"><div class="next-col-title" style="color:#085041;">繼續 ✓</div><div id="continue-list"></div></div>
     <div class="next-col" style="background:#FAEEDA;border-color:#FAC775;"><div class="next-col-title" style="color:#633806;">暫停 ⏸</div><div id="pause-list"></div></div>
     <div class="next-col" style="background:#EEEDFE;border-color:#AFA9EC;"><div class="next-col-title" style="color:#26215C;">新靈感 ✦</div><div id="idea-list"></div></div>
-    <div class="card">
-      <span class="label">新增靈感</span>
-      <input type="text" id="idea-input" class="field-mb" placeholder="下一季想要嘗試的新事物..." />
-      <button class="btn btn-primary" onclick="addIdea()">+ 新增靈感</button>
-    </div>
-    <div class="card" style="margin-top:10px;">
-      <span class="label">下一季的一句話意圖</span>
-      <input type="text" id="nq-intention" placeholder="例：我選擇把時間給讓我充電的事" oninput="saveIntention()" />
-    </div>
+    <div class="card"><span class="label">新增靈感</span><input type="text" id="idea-input" class="field-mb" placeholder="下一季想要嘗試的新事物..." /><button class="btn btn-primary" onclick="addIdea()">+ 新增靈感</button></div>
+    <div class="card" style="margin-top:10px;"><span class="label">下一季的一句話意圖</span><input type="text" id="nq-intention" placeholder="例：我選擇把時間給讓我充電的事" oninput="saveIntention()" /></div>
   </div>
 </div>
 
@@ -338,92 +298,78 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
   <button class="nav-item" onclick="showSection('nextq',this)"><span class="nav-icon">🌱</span>下一季</button>
 </div>
 
-<!-- Firebase -->
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut as fbSignOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import{getAuth,GoogleAuthProvider,signInWithPopup,onAuthStateChanged,signOut as fbSignOut}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import{getDatabase,ref,set,onValue}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyD4tI8lnF_CDT9WlPvGA1_z6oDb1JLapCU",
-  authDomain: "review-your-2026.firebaseapp.com",
-  databaseURL: "https://review-your-2026-default-rtdb.firebaseio.com",
-  projectId: "review-your-2026",
-  storageBucket: "review-your-2026.firebasestorage.app",
-  messagingSenderId: "166756715449",
-  appId: "1:166756715449:web:3ccc53ffdc57b2fc16c468",
-  measurementId: "G-EL453ES3PJ"
+const firebaseConfig={
+  apiKey:"AIzaSyD4tI8lnF_CDT9WlPvGA1_z6oDb1JLapCU",
+  authDomain:"review-your-2026.firebaseapp.com",
+  databaseURL:"https://review-your-2026-default-rtdb.firebaseio.com",
+  projectId:"review-your-2026",
+  storageBucket:"review-your-2026.firebasestorage.app",
+  messagingSenderId:"166756715449",
+  appId:"1:166756715449:web:3ccc53ffdc57b2fc16c468"
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getDatabase(app);
-const provider = new GoogleAuthProvider();
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getDatabase(app);
+const provider=new GoogleAuthProvider();
+let dbRef=null,saveTimer=null;
 
-let currentUser = null;
-let dbRef = null;
-let saveTimeout = null;
-
-window.signInWithGoogle = async () => {
-  document.getElementById('login-status').textContent = '登入中...';
-  try {
-    await signInWithPopup(auth, provider);
-  } catch(e) {
-    document.getElementById('login-status').textContent = '登入失敗，請再試一次';
-  }
+window.signInWithGoogle=async()=>{
+  document.getElementById('login-status').textContent='登入中...';
+  try{await signInWithPopup(auth,provider);}
+  catch(e){document.getElementById('login-status').textContent='登入失敗，請再試一次';}
 };
+window.signOut=async()=>{await fbSignOut(auth);};
 
-window.signOut = async () => {
-  await fbSignOut(auth);
-};
-
-function setSyncStatus(status) {
-  const el = document.getElementById('sync-indicator');
-  if (status === 'syncing') { el.textContent = '同步中...'; el.className = 'sync-indicator syncing'; }
-  else if (status === 'ok') { el.textContent = '已同步 ✓'; el.className = 'sync-indicator'; setTimeout(()=>{el.textContent='';}, 2000); }
-  else if (status === 'error') { el.textContent = '同步失敗'; el.className = 'sync-indicator error'; }
+function setSyncStatus(s){
+  const el=document.getElementById('sync-indicator');
+  if(s==='syncing'){el.textContent='同步中...';el.className='sync-indicator syncing';}
+  else if(s==='ok'){el.textContent='已同步 ✓';el.className='sync-indicator';setTimeout(()=>{el.textContent='';},2000);}
+  else if(s==='error'){el.textContent='同步失敗';el.className='sync-indicator error';}
 }
 
-window._saveToFirebase = function() {
-  if (!dbRef) return;
-  clearTimeout(saveTimeout);
-  saveTimeout = setTimeout(async () => {
+// ── 核心修復：存成 JSON 字串，避免 Firebase 陣列轉物件問題 ──
+window._saveToFirebase=()=>{
+  if(!dbRef)return;
+  clearTimeout(saveTimer);
+  saveTimer=setTimeout(async()=>{
     setSyncStatus('syncing');
-    try {
-      await set(dbRef, window._appState);
+    try{
+      // 存成一個 JSON 字串，這樣陣列結構完全保留
+      await set(dbRef,{data:JSON.stringify(window._appState)});
       setSyncStatus('ok');
-    } catch(e) {
-      setSyncStatus('error');
-    }
-  }, 800);
+    }catch(e){setSyncStatus('error');}
+  },800);
 };
 
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    currentUser = user;
-    document.getElementById('user-email').textContent = user.email;
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('main-app').style.display = 'block';
-    document.getElementById('bottom-nav').style.display = 'flex';
-
-    dbRef = ref(db, 'users/' + user.uid + '/reviewData');
-    onValue(dbRef, (snapshot) => {
-      const data = snapshot.val();
-      if (data) {
-        window._appState = data;
-        if (window._appReady) window.renderAll();
+onAuthStateChanged(auth,(user)=>{
+  if(user){
+    document.getElementById('user-email').textContent=user.email;
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('main-app').style.display='block';
+    document.getElementById('bottom-nav').style.display='flex';
+    dbRef=ref(db,'users/'+user.uid+'/reviewData');
+    onValue(dbRef,(snapshot)=>{
+      const raw=snapshot.val();
+      if(raw&&raw.data){
+        try{
+          // 從 JSON 字串還原，完整保留陣列結構
+          window._appState=JSON.parse(raw.data);
+        }catch(e){window._appState=window._defaultState();}
       } else {
-        window._appState = window._defaultState();
-        if (window._appReady) window.renderAll();
+        window._appState=window._defaultState();
       }
-      window._appReady = true;
-    }, { onlyOnce: false });
+      window.renderAll();
+    });
   } else {
-    currentUser = null;
-    document.getElementById('login-screen').style.display = 'flex';
-    document.getElementById('main-app').style.display = 'none';
-    document.getElementById('bottom-nav').style.display = 'none';
-    window._appReady = false;
+    document.getElementById('login-screen').style.display='flex';
+    document.getElementById('main-app').style.display='none';
+    document.getElementById('bottom-nav').style.display='none';
   }
 });
 </script>
@@ -464,30 +410,28 @@ const PHASE_LABELS={before:'開始前',during:'經歷中',after:'事後'};
 const PHASE_HINTS={before:'點選代表「開始前」的情緒，可多選',during:'點選代表「經歷中」的情緒，可多選',after:'點選代表「事後」的情緒，可多選'};
 const VAL_C=['#534AB7','#1D9E75','#185FA5','#BA7517','#D4537E','#639922','#0F6E56','#993C1D','#4a148c','#004d40','#f57f17','#880e4f'];
 
-window._defaultState = () => ({
+window._defaultState=()=>({
   Q1:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q2:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q3:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q4:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
 });
-window._appState = window._defaultState();
-window._appReady = false;
+window._appState=window._defaultState();
 
 function catByName(n){return ALL_CATS.find(c=>c.name===n)||ALL_CATS[ALL_CATS.length-1];}
 let currentQ='Q1';
 function qState(){return window._appState[currentQ];}
 function saveState(){window._saveToFirebase();}
 
-window.renderAll = function(){renderEvents();renderEventSel();renderDashboard();renderNextQ();};
+window.renderAll=function(){renderEvents();renderEventSel();renderDashboard();renderNextQ();};
 const Q_LABELS={Q1:'Q1 1-3月',Q2:'Q2 4-6月',Q3:'Q3 7-9月',Q4:'Q4 10-12月'};
 
 function switchQuarter(q){
   currentQ=q;
   ['','b','d','n'].forEach(sfx=>{['Q1','Q2','Q3','Q4'].forEach(qq=>{const el=document.getElementById(`q-btn-${qq}${sfx?'-'+sfx:''}`);if(el)el.classList.toggle('active',qq===q);});});
-  const ql=Q_LABELS[q];
-  document.getElementById('ev-section-title').textContent=ql+' 事件記錄';
-  document.getElementById('dash-title').textContent=ql+' 模式總覽';
-  document.getElementById('next-title').textContent=ql+' → 下一季的選擇';
+  document.getElementById('ev-section-title').textContent=Q_LABELS[q]+' 事件記錄';
+  document.getElementById('dash-title').textContent=Q_LABELS[q]+' 模式總覽';
+  document.getElementById('next-title').textContent=Q_LABELS[q]+' → 下一季的選擇';
   addDateMode='single';addMainCat='';addSubCats=new Set();setDateMode('single','');
   document.getElementById('ev-title').value='';
   ['date-single','date-from','date-to'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
@@ -581,18 +525,14 @@ function addCustomVal(){
   if(!qState().customVals)qState().customVals=[];
   qState().customVals.push(v);selVals.push(v);input.value='';saveState();renderValueTags();
 }
-function delCustomVal(e,v){
-  e.stopPropagation();
-  qState().customVals=(qState().customVals||[]).filter(x=>x!==v);
-  selVals=selVals.filter(x=>x!==v);saveState();renderValueTags();
-}
+function delCustomVal(e,v){e.stopPropagation();qState().customVals=(qState().customVals||[]).filter(x=>x!==v);selVals=selVals.filter(x=>x!==v);saveState();renderValueTags();}
 function selContTag(el){
   document.querySelectorAll('#continue-tags .tag').forEach(t=>{t.style.background='';t.style.color='';t.style.borderColor='';});
   el.style.background='#EEEDFE';el.style.color='#3C3489';el.style.borderColor='#534AB7';selCont=el.textContent;
 }
 function addEvent(){
   const title=document.getElementById('ev-title').value.trim();if(!title){alert('請輸入事件名稱');return;}
-  if(!qState().events)qState().events=[];
+  if(!Array.isArray(qState().events))qState().events=[];
   qState().events.push({title,dateInfo:getDateVal(''),cat:addMainCat||'其他',subCats:[...addSubCats],energy:parseInt(document.getElementById('ev-energy').value),note:document.getElementById('ev-note').value.trim()});
   saveState();
   document.getElementById('ev-title').value='';
@@ -641,7 +581,7 @@ function saveEdit(i){
 function cancelEdit(i){document.getElementById(`edit-form-${i}`)?.classList.remove('open');}
 function renderEvents(){
   const el=document.getElementById('event-list');
-  const events=qState().events||[];
+  const events=Array.isArray(qState().events)?qState().events:[];
   if(!events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
   el.innerHTML=events.map((ev,i)=>{
     const c=catByName(ev.cat);
@@ -680,17 +620,14 @@ function renderEvents(){
         <div class="energy-row" style="margin-bottom:4px;"><input type="range" id="edit-energy-${i}" min="1" max="5" step="1" oninput="document.getElementById('edit-energy-val-${i}').textContent=this.value" /><span class="energy-val" id="edit-energy-val-${i}">3</span></div>
         <div class="energy-labels"><span>輕輕帶過</span><span>傾盡全力</span></div>
         <span class="label">備注</span><textarea id="edit-note-${i}" class="field-mb" placeholder="備注..."></textarea>
-        <div class="edit-actions">
-          <button class="btn btn-primary" onclick="saveEdit(${i})">儲存修改</button>
-          <button class="btn btn-ghost" onclick="cancelEdit(${i})">取消</button>
-        </div>
+        <div class="edit-actions"><button class="btn btn-primary" onclick="saveEdit(${i})">儲存修改</button><button class="btn btn-ghost" onclick="cancelEdit(${i})">取消</button></div>
       </div>
     </div>`;
   }).join('');
 }
 function renderEventSel(){
   const sel=document.getElementById('bd-event-sel');const cur=sel.value;
-  const events=qState().events||[];
+  const events=Array.isArray(qState().events)?qState().events:[];
   sel.innerHTML='<option value="">— 選擇事件 —</option>'+events.map((ev,i)=>{const d=ev.dateInfo||{};const prefix=d.mode==='single'&&d.date?`[${d.date}] `:d.mode==='range'&&d.from?`[${d.from}] `:'';return`<option value="${i}" ${cur==i?'selected':''}>${prefix}${ev.title}</option>`;}).join('');
 }
 function switchPhase(p){currentPhase=p;['before','during','after'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('active',x===p));document.getElementById('phase-hint').textContent=PHASE_HINTS[p];buildMoodTable();}
@@ -726,7 +663,7 @@ function saveBreakdown(){
   const msg=document.getElementById('bd-saved-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);
 }
 function renderDashboard(){
-  const qs=qState();const events=qs.events||[];const breakdowns=qs.breakdowns||{};
+  const qs=qState();const events=Array.isArray(qs.events)?qs.events:[];const breakdowns=qs.breakdowns||{};
   document.getElementById('stat-grid').innerHTML=`<div class="stat-card"><div class="stat-num">${events.length}</div><div class="stat-lbl">記錄的事件</div></div><div class="stat-card"><div class="stat-num">${Object.keys(breakdowns).length}</div><div class="stat-lbl">已拆解</div></div><div class="stat-card"><div class="stat-num">${events.reduce((s,e)=>s+e.energy,0)}</div><div class="stat-lbl">精力總分</div></div>`;
   const catMap={};events.forEach(ev=>{catMap[ev.cat]=(catMap[ev.cat]||0)+ev.energy;});const maxCat=Math.max(1,...Object.values(catMap));
   document.getElementById('cat-bars').innerHTML=Object.keys(catMap).length?Object.entries(catMap).sort((a,b)=>b[1]-a[1]).map(([cat,val])=>{const c=catByName(cat);return`<div class="bar-row"><div class="bar-label">${cat}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(val/maxCat*100)}%;background:${c.bd};"></div></div><div class="bar-val">${val}</div></div>`;}).join(''):'<div class="empty-hint">新增事件後顯示</div>';
@@ -742,15 +679,16 @@ function renderDashboard(){
   document.getElementById('insights-box').innerHTML=ins.length?ins.map(t=>`<div class="insight-box"><div style="font-size:13px;">${t}</div></div>`).join(''):'<div class="empty-hint">完成更多事件拆解後，這裡會出現你的洞察</div>';
 }
 function renderNextQ(){
-  const qs=qState();const breakdowns=qs.breakdowns||{};const events=qs.events||[];
+  const qs=qState();const breakdowns=qs.breakdowns||{};const events=Array.isArray(qs.events)?qs.events:[];
   const ci=[],pi=[];
   Object.entries(breakdowns).forEach(([i,bd])=>{const ev=events[parseInt(i)];if(!ev)return;if(bd.continue==='繼續做'||bd.continue==='調整做')ci.push({title:ev.title,mode:bd.continue});else if(bd.continue==='暫停放下')pi.push(ev.title);});
   document.getElementById('continue-list').innerHTML=ci.length?ci.map(x=>`<div class="next-item"><div class="next-dot" style="background:#1D9E75;"></div><div style="font-size:14px;color:#085041;">${x.title}${x.mode==='調整做'?' <span style="font-size:11px;">(調整)</span>':''}</div></div>`).join(''):'<div style="font-size:12px;color:#085041;opacity:0.5;">完成拆解後自動填入</div>';
   document.getElementById('pause-list').innerHTML=pi.length?pi.map(t=>`<div class="next-item"><div class="next-dot" style="background:#BA7517;"></div><div style="font-size:14px;color:#633806;">${t}</div></div>`).join(''):'<div style="font-size:12px;color:#633806;opacity:0.5;">完成拆解後自動填入</div>';
-  document.getElementById('idea-list').innerHTML=(qs.ideas||[]).length?(qs.ideas||[]).map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
+  const ideas=Array.isArray(qs.ideas)?qs.ideas:[];
+  document.getElementById('idea-list').innerHTML=ideas.length?ideas.map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
   const el=document.getElementById('nq-intention');if(el)el.value=qs.intention||'';
 }
-function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;if(!qState().ideas)qState().ideas=[];qState().ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
+function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;if(!Array.isArray(qState().ideas))qState().ideas=[];qState().ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
 function delIdea(i){qState().ideas.splice(i,1);saveState();renderNextQ();}
 function saveIntention(){qState().intention=document.getElementById('nq-intention').value;saveState();}
 function showSection(name,btn){
