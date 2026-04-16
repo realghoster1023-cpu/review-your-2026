@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<title>季度回顧 1-3月</title>
+<title>2026年四季回顧紀錄</title>
 <style>
 :root {
   --bg:#ffffff;--bg2:#f5f4f0;--bg3:#eeecea;
@@ -15,12 +15,7 @@
   --radius:10px;--radius-sm:6px;
 }
 @media(prefers-color-scheme:dark){
-  :root{
-    --bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;
-    --text:#f2f2f7;--text2:#aeaeb2;--text3:#636366;
-    --border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);
-    --purple-light:#2a2560;
-  }
+  :root{--bg:#1c1c1e;--bg2:#2c2c2e;--bg3:#3a3a3c;--text:#f2f2f7;--text2:#aeaeb2;--text3:#636366;--border:rgba(255,255,255,0.12);--border2:rgba(255,255,255,0.22);--purple-light:#2a2560;}
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;background:var(--bg3);color:var(--text);min-height:100vh;}
@@ -46,42 +41,32 @@ textarea{resize:vertical;min-height:72px;line-height:1.5;}
 .field-mb{margin-bottom:14px;}
 .divider{height:0.5px;background:var(--border);margin:14px 0;}
 .toggle-row{display:flex;border:0.5px solid var(--border2);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:10px;}
-.toggle-btn{flex:1;padding:8px;font-size:13px;cursor:pointer;border:none;background:var(--bg2);color:var(--text2);border-right:0.5px solid var(--border);transition:all 0.12s;font-family:inherit;}
+.toggle-btn{flex:1;padding:8px;font-size:13px;cursor:pointer;border:none;background:var(--bg2);color:var(--text2);border-right:0.5px solid var(--border);font-family:inherit;}
 .toggle-btn:last-child{border-right:none;}
 .toggle-btn.active{background:var(--purple);color:#fff;font-weight:500;}
-.date-block{display:none;} .date-block.active{display:block;}
+.date-block{display:none;}.date-block.active{display:block;}
 .date-range-row{display:flex;align-items:center;gap:8px;}
 .date-range-row input{flex:1;}
 .date-sep{font-size:13px;color:var(--text3);flex-shrink:0;}
 .date-preview{margin-top:6px;font-size:12px;min-height:16px;}
 .date-preview span{background:var(--purple-light);color:var(--purple);padding:1px 8px;border-radius:8px;}
 .tag-row{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:10px;}
-.tag{padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);transition:all 0.12s;font-family:inherit;}
+.tag{padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
 .energy-row{display:flex;align-items:center;gap:12px;margin-bottom:4px;}
 input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--bg3);outline:none;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--purple);cursor:pointer;}
 .energy-val{font-size:16px;font-weight:600;color:var(--text);min-width:18px;text-align:center;}
 .energy-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-bottom:14px;}
-.btn{padding:12px 20px;border-radius:var(--radius-sm);cursor:pointer;font-size:15px;font-family:inherit;border:none;width:100%;font-weight:500;transition:opacity 0.15s;}
+.btn{padding:12px 20px;border-radius:var(--radius-sm);cursor:pointer;font-size:15px;font-family:inherit;border:none;width:100%;font-weight:500;}
 .btn:active{opacity:0.75;}
 .btn-primary{background:var(--purple);color:#fff;}
 .btn-ghost{background:var(--bg2);color:var(--text2);border:0.5px solid var(--border2);}
 .btn-sm{padding:7px 14px;font-size:13px;border-radius:var(--radius-sm);cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
 
-/* Category manager */
-.cat-manager-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
-.cat-manager-toggle-label{font-size:13px;font-weight:500;color:var(--text);}
-.cat-manager-hint{font-size:12px;color:var(--text3);}
-.cat-manager-body{display:none;margin-top:12px;}
-.cat-manager-body.open{display:block;}
-.cat-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;}
-.cat-chip{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:12px;border:0.5px solid;}
-.cat-chip-del{background:none;border:none;cursor:pointer;font-size:14px;line-height:1;padding:0;opacity:0.5;color:inherit;}
-.cat-chip-del:hover{opacity:1;}
-.color-swatches{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;}
-.swatch{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform 0.1s;flex-shrink:0;}
-.swatch:hover{transform:scale(1.15);}
-.swatch.sel{border-color:var(--text);}
+/* Quarter selector */
+.quarter-selector{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.quarter-btn{padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
+.quarter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;}
 
 /* Event list */
 .event-item{background:var(--bg);border-radius:var(--radius);margin-bottom:10px;border:0.5px solid var(--border);overflow:hidden;}
@@ -98,6 +83,14 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .edit-form.open{display:block;}
 .edit-actions{display:flex;gap:8px;margin-top:4px;}
 .edit-actions .btn{width:auto;padding:10px 18px;}
+
+/* Value tags */
+.val-tag{padding:5px 11px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);display:inline-flex;align-items:center;gap:3px;font-family:inherit;}
+.val-tag.sel{background:var(--purple-light);color:var(--purple-dark);border-color:var(--purple);}
+.val-del{font-size:10px;opacity:0.3;line-height:1;background:none;border:none;padding:0;margin:0;color:inherit;cursor:pointer;display:inline-flex;align-items:center;-webkit-appearance:none;}
+.val-del:hover{opacity:0.75;}
+.add-val-row{display:flex;gap:8px;align-items:center;margin-top:8px;}
+.add-val-row input{flex:1;margin-bottom:0;}
 
 /* Phase tabs */
 .phase-tabs{display:flex;border:0.5px solid var(--border2);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:12px;}
@@ -137,7 +130,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .viz-box{background:var(--bg);border-radius:var(--radius);padding:14px;margin-bottom:12px;border:0.5px solid var(--border);}
 .viz-title{font-size:13px;font-weight:500;color:var(--text2);margin-bottom:10px;}
 .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
-.bar-label{font-size:11px;color:var(--text2);width:56px;text-align:right;flex-shrink:0;}
+.bar-label{font-size:11px;color:var(--text2);width:60px;text-align:right;flex-shrink:0;}
 .bar-track{flex:1;height:12px;background:var(--bg2);border-radius:6px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:6px;transition:width 0.4s;}
 .bar-val{font-size:11px;color:var(--text3);width:20px;}
@@ -159,35 +152,20 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 <body>
 <div class="app">
   <div class="header">
-    <div class="header-title">1-3月 季度回顧</div>
+    <div class="header-title">2026年四季回顧紀錄</div>
     <div class="header-sub">記錄事件 → 情緒流動 → 看見模式 → 決定下一步</div>
   </div>
 
-  <!-- SECTION 1 -->
   <div id="sec-events" class="section active">
     <div style="height:16px;"></div>
-    <div class="section-title">印象深刻的事件</div>
-    <div class="section-sub">記下這幾個月讓你印象深刻的事，不限好壞</div>
-
-    <!-- Category Manager -->
-    <div class="card">
-      <div class="cat-manager-toggle" onclick="toggleCatManager()">
-        <span class="cat-manager-toggle-label">類別管理</span>
-        <span id="cat-manager-hint" class="cat-manager-hint">點開新增或刪除自訂類別 ▾</span>
-      </div>
-      <div class="cat-manager-body" id="cat-manager-body">
-        <div class="cat-chips" id="cat-chips"></div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:8px;">新增類別</div>
-        <div style="display:flex;gap:8px;align-items:center;">
-          <input type="text" id="new-cat-name" placeholder="類別名稱（最多8字）" maxlength="8" style="flex:1;margin-bottom:0;" />
-          <button class="btn-sm" onclick="addCustomCat()">+ 新增</button>
-        </div>
-        <div style="font-size:12px;color:var(--text3);margin-top:10px;margin-bottom:6px;">選一個顏色</div>
-        <div class="color-swatches" id="color-swatches"></div>
-      </div>
+    <div class="quarter-selector">
+      <button class="quarter-btn active" id="q-btn-Q1" onclick="switchQuarter('Q1')">Q1 1-3月</button>
+      <button class="quarter-btn" id="q-btn-Q2" onclick="switchQuarter('Q2')">Q2 4-6月</button>
+      <button class="quarter-btn" id="q-btn-Q3" onclick="switchQuarter('Q3')">Q3 7-9月</button>
+      <button class="quarter-btn" id="q-btn-Q4" onclick="switchQuarter('Q4')">Q4 10-12月</button>
     </div>
-
-    <!-- Add Event -->
+    <div class="section-title" id="ev-section-title">Q1 事件記錄</div>
+    <div class="section-sub">記下這幾個月讓你印象深刻的事，不限好壞</div>
     <div class="card">
       <span class="label">事件名稱</span>
       <input type="text" id="ev-title" class="field-mb" placeholder="例：法國英國旅行" />
@@ -224,11 +202,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     <div id="event-list"></div>
   </div>
 
-  <!-- SECTION 2 -->
   <div id="sec-breakdown" class="section">
     <div style="height:16px;"></div>
+    <div class="quarter-selector">
+      <button class="quarter-btn active" id="q-btn-Q1-b" onclick="switchQuarter('Q1')">Q1 1-3月</button>
+      <button class="quarter-btn" id="q-btn-Q2-b" onclick="switchQuarter('Q2')">Q2 4-6月</button>
+      <button class="quarter-btn" id="q-btn-Q3-b" onclick="switchQuarter('Q3')">Q3 7-9月</button>
+      <button class="quarter-btn" id="q-btn-Q4-b" onclick="switchQuarter('Q4')">Q4 10-12月</button>
+    </div>
     <div class="section-title">情緒流動</div>
-    <div class="section-sub">選一個事件，記錄開始前、經歷中、事後的情緒（每個階段可多選）</div>
+    <div class="section-sub">選一個事件，記錄開始前、經歷中、事後的情緒（可多選）</div>
     <div class="card" style="margin-bottom:12px;">
       <span class="label">選擇要拆解的事件</span>
       <select id="bd-event-sel" onchange="loadBreakdown()"></select>
@@ -251,20 +234,17 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
         <div style="font-size:15px;font-weight:600;margin-bottom:12px;">意義探索</div>
         <span class="label">我為什麼選擇做這件事？</span>
         <textarea id="bd-why" class="field-mb" placeholder="是什麼讓你決定投入這件事？"></textarea>
-        <span class="label">這呈現了我的什麼價值或需求？</span>
-        <div class="tag-row" id="value-tags">
-          <div class="tag" onclick="selTag(this,'val')">連結感</div><div class="tag" onclick="selTag(this,'val')">成就感</div>
-          <div class="tag" onclick="selTag(this,'val')">自由</div><div class="tag" onclick="selTag(this,'val')">創造</div>
-          <div class="tag" onclick="selTag(this,'val')">學習成長</div><div class="tag" onclick="selTag(this,'val')">貢獻</div>
-          <div class="tag" onclick="selTag(this,'val')">冒險</div><div class="tag" onclick="selTag(this,'val')">安全感</div>
-          <div class="tag" onclick="selTag(this,'val')">樂趣</div><div class="tag" onclick="selTag(this,'val')">療癒</div>
-          <div class="tag" onclick="selTag(this,'val')">被看見</div><div class="tag" onclick="selTag(this,'val')">掌控感</div>
+        <span class="label">這呈現了我的什麼價值或需求？<span class="label-hint">可多選，也可自行新增</span></span>
+        <div class="tag-row" id="value-tags"></div>
+        <div class="add-val-row">
+          <input type="text" id="new-val-input" placeholder="輸入自訂價值或需求..." maxlength="12" />
+          <button class="btn-sm" onclick="addCustomVal()">+ 新增</button>
         </div>
-        <span class="label">這件事我想...</span>
+        <span class="label" style="margin-top:14px;">這件事我想...</span>
         <div class="tag-row" id="continue-tags">
-          <div class="tag" onclick="selTag(this,'cont')">繼續做</div>
-          <div class="tag" onclick="selTag(this,'cont')">調整做</div>
-          <div class="tag" onclick="selTag(this,'cont')">暫停放下</div>
+          <div class="tag" onclick="selContTag(this)">繼續做</div>
+          <div class="tag" onclick="selContTag(this)">調整做</div>
+          <div class="tag" onclick="selContTag(this)">暫停放下</div>
         </div>
         <span class="label" style="margin-top:10px;">有什麼想多說的？</span>
         <textarea id="bd-reflection" class="field-mb" placeholder="事後的反思、感受、想法..."></textarea>
@@ -274,10 +254,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     </div>
   </div>
 
-  <!-- SECTION 3 -->
   <div id="sec-dashboard" class="section">
     <div style="height:16px;"></div>
-    <div class="section-title">模式總覽</div>
+    <div class="quarter-selector">
+      <button class="quarter-btn active" id="q-btn-Q1-d" onclick="switchQuarter('Q1')">Q1 1-3月</button>
+      <button class="quarter-btn" id="q-btn-Q2-d" onclick="switchQuarter('Q2')">Q2 4-6月</button>
+      <button class="quarter-btn" id="q-btn-Q3-d" onclick="switchQuarter('Q3')">Q3 7-9月</button>
+      <button class="quarter-btn" id="q-btn-Q4-d" onclick="switchQuarter('Q4')">Q4 10-12月</button>
+    </div>
+    <div class="section-title" id="dash-title">Q1 模式總覽</div>
     <div class="section-sub">看見這幾個月的能量流向和情緒樣貌</div>
     <div class="stat-grid" id="stat-grid"></div>
     <div class="viz-box"><div class="viz-title">精力投入分布（依主類別）</div><div id="cat-bars"></div></div>
@@ -294,10 +279,15 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     <div class="viz-box"><div class="viz-title">洞察小結</div><div id="insights-box"></div></div>
   </div>
 
-  <!-- SECTION 4 -->
   <div id="sec-nextq" class="section">
     <div style="height:16px;"></div>
-    <div class="section-title">下一季的選擇</div>
+    <div class="quarter-selector">
+      <button class="quarter-btn active" id="q-btn-Q1-n" onclick="switchQuarter('Q1')">Q1 1-3月</button>
+      <button class="quarter-btn" id="q-btn-Q2-n" onclick="switchQuarter('Q2')">Q2 4-6月</button>
+      <button class="quarter-btn" id="q-btn-Q3-n" onclick="switchQuarter('Q3')">Q3 7-9月</button>
+      <button class="quarter-btn" id="q-btn-Q4-n" onclick="switchQuarter('Q4')">Q4 10-12月</button>
+    </div>
+    <div class="section-title" id="next-title">Q1 → 下一季的選擇</div>
     <div class="section-sub">帶著這幾個月的覺察，決定接下來要帶走什麼、放下什麼</div>
     <div class="next-col" style="background:#E1F5EE;border-color:#9FE1CB;">
       <div class="next-col-title" style="color:#085041;">繼續 ✓</div><div id="continue-list"></div>
@@ -328,27 +318,21 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 </div>
 
 <script>
-const DEFAULT_CATS=[
-  {name:'人際連結',bg:'#E1F5EE',fg:'#085041',bd:'#1D9E75',custom:false},
-  {name:'自我成長',bg:'#EEEDFE',fg:'#26215C',bd:'#534AB7',custom:false},
-  {name:'工作創作',bg:'#E6F1FB',fg:'#042C53',bd:'#185FA5',custom:false},
-  {name:'身體健康',bg:'#EAF3DE',fg:'#173404',bd:'#639922',custom:false},
-  {name:'冒險嘗試',bg:'#FAEEDA',fg:'#412402',bd:'#BA7517',custom:false},
-  {name:'休息放鬆',bg:'#FBEAF0',fg:'#4B1528',bd:'#D4537E',custom:false},
-  {name:'其他',bg:'#F1EFE8',fg:'#2C2C2A',bd:'#888780',custom:false},
+const ALL_CATS=[
+  {name:'心理健康',bg:'#f3e5f5',fg:'#4a148c',bd:'#9c27b0'},
+  {name:'身體健康',bg:'#EAF3DE',fg:'#173404',bd:'#639922'},
+  {name:'生活環境',bg:'#e0f7fa',fg:'#004d40',bd:'#00bcd4'},
+  {name:'休閒放鬆',bg:'#FBEAF0',fg:'#4B1528',bd:'#D4537E'},
+  {name:'工作職涯',bg:'#E6F1FB',fg:'#042C53',bd:'#185FA5'},
+  {name:'財務',bg:'#fffde7',fg:'#f57f17',bd:'#ffc107'},
+  {name:'人際關係',bg:'#E1F5EE',fg:'#085041',bd:'#1D9E75'},
+  {name:'親密關係',bg:'#fce4ec',fg:'#880e4f',bd:'#e91e63'},
+  {name:'家庭關係',bg:'#fff3e0',fg:'#bf360c',bd:'#ff9800'},
+  {name:'生活雜務',bg:'#F1EFE8',fg:'#2C2C2A',bd:'#888780'},
+  {name:'冒險嘗試',bg:'#FAEEDA',fg:'#412402',bd:'#BA7517'},
+  {name:'其他',bg:'#eceff1',fg:'#263238',bd:'#607d8b'},
 ];
-const PALETTE=[
-  {bg:'#fce4ec',fg:'#880e4f',bd:'#e91e63'},
-  {bg:'#f3e5f5',fg:'#4a148c',bd:'#9c27b0'},
-  {bg:'#e8eaf6',fg:'#1a237e',bd:'#3f51b5'},
-  {bg:'#e0f7fa',fg:'#004d40',bd:'#00bcd4'},
-  {bg:'#e8f5e9',fg:'#1b5e20',bd:'#4caf50'},
-  {bg:'#fffde7',fg:'#f57f17',bd:'#ffc107'},
-  {bg:'#fbe9e7',fg:'#bf360c',bd:'#ff5722'},
-  {bg:'#efebe9',fg:'#3e2723',bd:'#795548'},
-  {bg:'#f5f5f5',fg:'#212121',bd:'#9e9e9e'},
-  {bg:'#e0f2f1',fg:'#004d40',bd:'#009688'},
-];
+const DEFAULT_VALUES=['自我實現','歸屬感','被看見','親密感','獨立性','自主權','影響力','啟發','目標感','學習成長','創造力','好奇心','內心平靜','安全感','幽默','放鬆','自發性'];
 const MOOD_ROWS=[
   [{t:'憤怒的',q:'HL'},{t:'驚惶失措的',q:'HL'},{t:'壓力很大的',q:'HL'},{t:'緊張不安的',q:'HL'},{t:'震驚的',q:'HL'},{t:'驚喜的',q:'HH'},{t:'振奮的',q:'HH'},{t:'歡慶的',q:'HH'},{t:'心花怒放的',q:'HH'},{t:'欣喜若狂的',q:'HH'}],
   [{t:'暴怒的',q:'HL'},{t:'氣沖沖的',q:'HL'},{t:'沮喪的',q:'HL'},{t:'神經緊繃的',q:'HL'},{t:'錯愕的',q:'HL'},{t:'充塞的',q:'HH'},{t:'愉悅的',q:'HH'},{t:'有動力的',q:'HH'},{t:'受到啟發的',q:'HH'},{t:'興高采烈的',q:'HH'}],
@@ -367,57 +351,58 @@ const Q_SEL={HL:'#d04040',HH:'#b89000',LH:'#2a8a2a',LL:'#6050b8'};
 const PHASE_COLORS={before:'#c8a800',during:'#e05050',after:'#3a9a3a'};
 const PHASE_LABELS={before:'開始前',during:'經歷中',after:'事後'};
 const PHASE_HINTS={before:'點選代表「開始前」的情緒，可多選',during:'點選代表「經歷中」的情緒，可多選',after:'點選代表「事後」的情緒，可多選'};
-const VAL_C=['#534AB7','#1D9E75','#185FA5','#BA7517','#D4537E','#639922','#0F6E56','#993C1D'];
+const VAL_C=['#534AB7','#1D9E75','#185FA5','#BA7517','#D4537E','#639922','#0F6E56','#993C1D','#4a148c','#004d40','#f57f17','#880e4f'];
 
-let state={events:[],breakdowns:{},ideas:[],intention:'',customCats:[]};
-let phaseSel={before:new Set(),during:new Set(),after:new Set()};
-let currentPhase='before',currentBdIdx=null;
-let addDateMode='single',addMainCat='',addSubCats=new Set();
-let editStates={};
-let selVals=[],selCont='';
-let selectedPaletteIdx=0;
+function catByName(n){return ALL_CATS.find(c=>c.name===n)||ALL_CATS[ALL_CATS.length-1];}
 
-function allCats(){return[...DEFAULT_CATS,...state.customCats.map(c=>({...c,custom:true}))];}
-function catByName(n){return allCats().find(c=>c.name===n)||DEFAULT_CATS[DEFAULT_CATS.length-1];}
-
-function loadState(){try{const s=localStorage.getItem('q_review_2025_q1_v2');if(s)state=JSON.parse(s);}catch(e){}renderCatManager();buildAddFormCatTags();renderAll();}
-function saveState(){try{localStorage.setItem('q_review_2025_q1_v2',JSON.stringify(state));}catch(e){}}
+let currentQ='Q1';
+let state={
+  Q1:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
+  Q2:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
+  Q3:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
+  Q4:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
+};
+function qState(){return state[currentQ];}
+function loadState(){try{const s=localStorage.getItem('review_2026_final');if(s)state=JSON.parse(s);}catch(e){}buildCatTags();renderAll();}
+function saveState(){try{localStorage.setItem('review_2026_final',JSON.stringify(state));}catch(e){}}
 function renderAll(){renderEvents();renderEventSel();renderDashboard();renderNextQ();}
 
-function toggleCatManager(){
-  const body=document.getElementById('cat-manager-body');
-  const hint=document.getElementById('cat-manager-hint');
-  const open=body.classList.toggle('open');
-  hint.textContent=open?'點關閉 ▴':'點開新增或刪除自訂類別 ▾';
+const Q_LABELS={Q1:'Q1 1-3月',Q2:'Q2 4-6月',Q3:'Q3 7-9月',Q4:'Q4 10-12月'};
+function switchQuarter(q){
+  currentQ=q;
+  ['','b','d','n'].forEach(sfx=>{
+    ['Q1','Q2','Q3','Q4'].forEach(qq=>{
+      const el=document.getElementById(`q-btn-${qq}${sfx?'-'+sfx:''}`);
+      if(el)el.classList.toggle('active',qq===q);
+    });
+  });
+  const ql=Q_LABELS[q];
+  document.getElementById('ev-section-title').textContent=ql+' 事件記錄';
+  document.getElementById('dash-title').textContent=ql+' 模式總覽';
+  document.getElementById('next-title').textContent=ql+' → 下一季的選擇';
+  addDateMode='single';addMainCat='';addSubCats=new Set();setDateMode('single','');
+  document.getElementById('ev-title').value='';
+  ['date-single','date-from','date-to'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('date-preview').innerHTML='';
+  document.getElementById('ev-note').value='';
+  document.getElementById('ev-energy').value=3;document.getElementById('ev-energy-val').textContent='3';
+  document.querySelectorAll('#cat-main-tags .tag,#cat-sub-tags .tag').forEach(t=>{clearTagStyle(t);t.style.opacity='';t.style.cursor='';});
+  document.getElementById('bd-panel').style.display='none';
+  document.getElementById('bd-event-sel').value='';
+  renderAll();
 }
-function renderCatManager(){
-  document.getElementById('cat-chips').innerHTML=allCats().map(c=>`<div class="cat-chip" style="background:${c.bg};color:${c.fg};border-color:${c.bd};">${c.name}${c.custom?`<button class="cat-chip-del" onclick="delCustomCat('${c.name}')">×</button>`:'<span style="opacity:0.4;font-size:10px;margin-left:2px;">·</span>'}</div>`).join('');
-  document.getElementById('color-swatches').innerHTML=PALETTE.map((p,i)=>`<div class="swatch ${i===selectedPaletteIdx?'sel':''}" style="background:${p.bd};" onclick="selectPalette(${i})"></div>`).join('');
-}
-function selectPalette(i){selectedPaletteIdx=i;renderCatManager();}
-function addCustomCat(){
-  const nameEl=document.getElementById('new-cat-name');const name=nameEl.value.trim();
-  if(!name){alert('請輸入類別名稱');return;}
-  if(allCats().some(c=>c.name===name)){alert('已有同名類別');return;}
-  const p=PALETTE[selectedPaletteIdx];
-  state.customCats.push({name,bg:p.bg,fg:p.fg,bd:p.bd});
-  nameEl.value='';saveState();renderCatManager();buildAddFormCatTags();
-}
-function delCustomCat(name){
-  if(state.events.some(ev=>ev.cat===name||(ev.subCats||[]).includes(name))){
-    if(!confirm(`有事件正在使用「${name}」，刪除後該事件類別會改為「其他」，確定嗎？`))return;
-    state.events.forEach(ev=>{if(ev.cat===name)ev.cat='其他';if(ev.subCats)ev.subCats=ev.subCats.filter(s=>s!==name);});
-  }
-  state.customCats=state.customCats.filter(c=>c.name!==name);
-  saveState();renderCatManager();buildAddFormCatTags();renderEvents();
-}
-function buildAddFormCatTags(){
-  const main=document.getElementById('cat-main-tags');const sub=document.getElementById('cat-sub-tags');
-  main.innerHTML=allCats().map(c=>`<div class="tag" data-cat="${c.name}" onclick="selMainCat(this,'')">${c.name}</div>`).join('');
-  sub.innerHTML=allCats().filter(c=>c.name!=='其他').map(c=>`<div class="tag" data-cat="${c.name}" onclick="selSubCat(this,'')">${c.name}</div>`).join('');
+
+function buildCatTags(){
+  document.getElementById('cat-main-tags').innerHTML=ALL_CATS.map(c=>`<div class="tag" data-cat="${c.name}" onclick="selMainCat(this,'')">${c.name}</div>`).join('');
+  document.getElementById('cat-sub-tags').innerHTML=ALL_CATS.filter(c=>c.name!=='其他').map(c=>`<div class="tag" data-cat="${c.name}" onclick="selSubCat(this,'')">${c.name}</div>`).join('');
 }
 function applyTagStyle(el,c){el.style.background=c.bg;el.style.color=c.fg;el.style.borderColor=c.bd;el.style.fontWeight='500';}
 function clearTagStyle(el){el.style.background='';el.style.color='';el.style.borderColor='';el.style.fontWeight='';}
+
+let addDateMode='single',addMainCat='',addSubCats=new Set();
+let editStates={},selVals=[],selCont='';
+let phaseSel={before:new Set(),during:new Set(),after:new Set()};
+let currentPhase='before',currentBdIdx=null;
 
 function setDateMode(mode,suffix){
   if(suffix==='')addDateMode=mode;
@@ -448,7 +433,6 @@ function formatDateBadge(ev){
   if(d.from&&d.to)return`<span class="badge-date">${d.from} → ${d.to}</span>`;
   return d.from?`<span class="badge-date">${d.from}</span>`:'';
 }
-
 function selMainCat(el,suffix){
   const v=el.dataset.cat;const c=catByName(v);
   const cid=suffix===''?'cat-main-tags':`cat-main-tags-${suffix}`;
@@ -476,23 +460,56 @@ function refreshSubTags(suffix){
   });
 }
 
+// Value tags
+function allVals(){return[...DEFAULT_VALUES,...(qState().customVals||[])];}
+function renderValueTags(){
+  document.getElementById('value-tags').innerHTML=allVals().map(v=>{
+    const isSel=selVals.includes(v);
+    const isCustom=!DEFAULT_VALUES.includes(v);
+    return`<span class="val-tag ${isSel?'sel':''}" onclick="toggleVal('${v}')">${v}${isCustom?`<button class="val-del" onclick="delCustomVal(event,'${v}')">×</button>`:''}</span>`;
+  }).join('');
+}
+function toggleVal(v){
+  if(selVals.includes(v))selVals=selVals.filter(x=>x!==v);else selVals.push(v);
+  renderValueTags();
+}
+function addCustomVal(){
+  const input=document.getElementById('new-val-input');const v=input.value.trim();
+  if(!v)return;
+  if(allVals().includes(v)){alert('已有相同的項目');return;}
+  if(!qState().customVals)qState().customVals=[];
+  qState().customVals.push(v);selVals.push(v);
+  input.value='';saveState();renderValueTags();
+}
+function delCustomVal(e,v){
+  e.stopPropagation();
+  qState().customVals=(qState().customVals||[]).filter(x=>x!==v);
+  selVals=selVals.filter(x=>x!==v);
+  saveState();renderValueTags();
+}
+function selContTag(el){
+  document.querySelectorAll('#continue-tags .tag').forEach(t=>{t.style.background='';t.style.color='';t.style.borderColor='';});
+  el.style.background='#EEEDFE';el.style.color='#3C3489';el.style.borderColor='#534AB7';
+  selCont=el.textContent;
+}
+
 function addEvent(){
   const title=document.getElementById('ev-title').value.trim();if(!title){alert('請輸入事件名稱');return;}
-  state.events.push({title,dateInfo:getDateVal(''),cat:addMainCat||'其他',subCats:[...addSubCats],energy:parseInt(document.getElementById('ev-energy').value),note:document.getElementById('ev-note').value.trim()});
+  qState().events.push({title,dateInfo:getDateVal(''),cat:addMainCat||'其他',subCats:[...addSubCats],energy:parseInt(document.getElementById('ev-energy').value),note:document.getElementById('ev-note').value.trim()});
   saveState();
   document.getElementById('ev-title').value='';
   ['date-single','date-from','date-to'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('date-preview').innerHTML='';
-  document.getElementById('ev-note').value='';document.getElementById('ev-energy').value=3;document.getElementById('ev-energy-val').textContent='3';
+  document.getElementById('date-preview').innerHTML='';document.getElementById('ev-note').value='';
+  document.getElementById('ev-energy').value=3;document.getElementById('ev-energy-val').textContent='3';
   addDateMode='single';addMainCat='';addSubCats=new Set();setDateMode('single','');
   document.querySelectorAll('#cat-main-tags .tag,#cat-sub-tags .tag').forEach(t=>{clearTagStyle(t);t.style.opacity='';t.style.cursor='';});
   renderEvents();renderEventSel();renderDashboard();
 }
 function delEvent(i){
   if(!confirm('確定刪除這個事件？'))return;
-  state.events.splice(i,1);
-  const nb={};Object.keys(state.breakdowns).forEach(k=>{const ki=parseInt(k);if(ki<i)nb[k]=state.breakdowns[k];else if(ki>i)nb[ki-1]=state.breakdowns[k];});
-  state.breakdowns=nb;saveState();renderAll();
+  qState().events.splice(i,1);
+  const nb={};Object.keys(qState().breakdowns).forEach(k=>{const ki=parseInt(k);if(ki<i)nb[k]=qState().breakdowns[k];else if(ki>i)nb[ki-1]=qState().breakdowns[k];});
+  qState().breakdowns=nb;saveState();renderAll();
 }
 function toggleEdit(i){
   const form=document.getElementById(`edit-form-${i}`);if(!form)return;
@@ -501,7 +518,7 @@ function toggleEdit(i){
   if(!isOpen){form.classList.add('open');populateEditForm(i);}
 }
 function populateEditForm(i){
-  const ev=state.events[i];
+  const ev=qState().events[i];
   document.getElementById(`edit-title-${i}`).value=ev.title||'';
   document.getElementById(`edit-note-${i}`).value=ev.note||'';
   document.getElementById(`edit-energy-${i}`).value=ev.energy||3;
@@ -520,15 +537,15 @@ function populateEditForm(i){
 function saveEdit(i){
   const title=document.getElementById(`edit-title-${i}`).value.trim();if(!title){alert('請輸入事件名稱');return;}
   const es=editStates[i]||{};
-  state.events[i]={...state.events[i],title,dateInfo:getDateVal(i),cat:es.mainCat||'其他',subCats:[...(es.subCats||new Set())],energy:parseInt(document.getElementById(`edit-energy-${i}`).value),note:document.getElementById(`edit-note-${i}`).value.trim()};
+  qState().events[i]={...qState().events[i],title,dateInfo:getDateVal(i),cat:es.mainCat||'其他',subCats:[...(es.subCats||new Set())],energy:parseInt(document.getElementById(`edit-energy-${i}`).value),note:document.getElementById(`edit-note-${i}`).value.trim()};
   saveState();renderEvents();renderEventSel();renderDashboard();
 }
 function cancelEdit(i){document.getElementById(`edit-form-${i}`)?.classList.remove('open');}
 
 function renderEvents(){
   const el=document.getElementById('event-list');
-  if(!state.events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
-  el.innerHTML=state.events.map((ev,i)=>{
+  if(!qState().events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
+  el.innerHTML=qState().events.map((ev,i)=>{
     const c=catByName(ev.cat);
     return`<div class="event-item">
       <div class="event-header">
@@ -539,7 +556,7 @@ function renderEvents(){
             <span class="badge-main" style="background:${c.bg};color:${c.fg};">${ev.cat}</span>
             ${(ev.subCats||[]).map(s=>{const sc=catByName(s);return`<span class="badge-sub" style="background:${sc.bg}60;color:${sc.fg};border-color:${sc.bd}60;">${s}</span>`;}).join('')}
             <span style="font-size:11px;color:var(--text3)">${'●'.repeat(ev.energy)}${'○'.repeat(5-ev.energy)}</span>
-            ${state.breakdowns[i]?'<span style="color:#0F6E56;font-size:11px;">✓ 已拆解</span>':''}
+            ${qState().breakdowns[i]?'<span style="color:#0F6E56;font-size:11px;">✓ 已拆解</span>':''}
           </div>
           ${ev.note?`<div style="font-size:12px;color:var(--text3);margin-top:4px;">${ev.note}</div>`:''}
         </div>
@@ -551,18 +568,15 @@ function renderEvents(){
       <div class="edit-form" id="edit-form-${i}">
         <span class="label">事件名稱</span><input type="text" id="edit-title-${i}" class="field-mb" />
         <span class="label">日期</span>
-        <div class="toggle-row">
-          <button class="toggle-btn active" id="btn-single-${i}" onclick="setDateMode('single',${i})">單日</button>
-          <button class="toggle-btn" id="btn-range-${i}" onclick="setDateMode('range',${i})">區間</button>
-        </div>
+        <div class="toggle-row"><button class="toggle-btn active" id="btn-single-${i}" onclick="setDateMode('single',${i})">單日</button><button class="toggle-btn" id="btn-range-${i}" onclick="setDateMode('range',${i})">區間</button></div>
         <div class="date-block active" id="block-single-${i}"><input type="date" id="date-single-${i}" oninput="updateDatePreview(${i})" style="width:100%;" /></div>
         <div class="date-block" id="block-range-${i}"><div class="date-range-row"><input type="date" id="date-from-${i}" oninput="updateDatePreview(${i})" /><span class="date-sep">→</span><input type="date" id="date-to-${i}" oninput="updateDatePreview(${i})" /></div></div>
         <div class="date-preview field-mb" id="date-preview-${i}"></div>
         <div class="divider"></div>
         <span class="label">主類別</span>
-        <div class="tag-row" id="cat-main-tags-${i}">${allCats().map(ct=>`<div class="tag" data-cat="${ct.name}" onclick="selMainCat(this,${i})">${ct.name}</div>`).join('')}</div>
+        <div class="tag-row" id="cat-main-tags-${i}">${ALL_CATS.map(ct=>`<div class="tag" data-cat="${ct.name}" onclick="selMainCat(this,${i})">${ct.name}</div>`).join('')}</div>
         <span class="label">副標籤</span>
-        <div class="tag-row" id="cat-sub-tags-${i}">${allCats().filter(ct=>ct.name!=='其他').map(ct=>`<div class="tag" data-cat="${ct.name}" onclick="selSubCat(this,${i})">${ct.name}</div>`).join('')}</div>
+        <div class="tag-row" id="cat-sub-tags-${i}">${ALL_CATS.filter(ct=>ct.name!=='其他').map(ct=>`<div class="tag" data-cat="${ct.name}" onclick="selSubCat(this,${i})">${ct.name}</div>`).join('')}</div>
         <div class="divider"></div>
         <span class="label">投入程度</span>
         <div class="energy-row" style="margin-bottom:4px;"><input type="range" id="edit-energy-${i}" min="1" max="5" step="1" oninput="document.getElementById('edit-energy-val-${i}').textContent=this.value" /><span class="energy-val" id="edit-energy-val-${i}">3</span></div>
@@ -579,7 +593,7 @@ function renderEvents(){
 
 function renderEventSel(){
   const sel=document.getElementById('bd-event-sel');const cur=sel.value;
-  sel.innerHTML='<option value="">— 選擇事件 —</option>'+state.events.map((ev,i)=>{const d=ev.dateInfo||{};const prefix=d.mode==='single'&&d.date?`[${d.date}] `:d.mode==='range'&&d.from?`[${d.from}] `:'';return`<option value="${i}" ${cur==i?'selected':''}>${prefix}${ev.title}</option>`;}).join('');
+  sel.innerHTML='<option value="">— 選擇事件 —</option>'+qState().events.map((ev,i)=>{const d=ev.dateInfo||{};const prefix=d.mode==='single'&&d.date?`[${d.date}] `:d.mode==='range'&&d.from?`[${d.from}] `:'';return`<option value="${i}" ${cur==i?'selected':''}>${prefix}${ev.title}</option>`;}).join('');
 }
 
 function switchPhase(p){currentPhase=p;['before','during','after'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('active',x===p));document.getElementById('phase-hint').textContent=PHASE_HINTS[p];buildMoodTable();}
@@ -594,17 +608,35 @@ function drawFlowArrows(){const canvas=document.getElementById('flow-canvas');co
 function getMoodInfo(key){const[ri,ci]=key.split('_').map(Number);return MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];}
 function updateFlowViz(){const el=document.getElementById('flow-viz');const phases=['before','during','after'];if(!phases.some(p=>phaseSel[p].size>0)){el.innerHTML='<div class="flow-empty">開始選情緒後，這裡會顯示你的情緒弧線</div>';return;}let html='';phases.forEach(p=>{const keys=[...phaseSel[p]];const pills=keys.map(k=>{const info=getMoodInfo(k);return info?`<span class="flow-pill" style="background:${Q_SEL[info.q]};">${info.t}</span>`:''}).join('');html+=`<div class="flow-phase-row"><div class="flow-phase-label" style="color:${PHASE_COLORS[p]};">${PHASE_LABELS[p]}</div><div class="flow-pills">${pills||'<span style="font-size:12px;color:var(--text3);">未選</span>'}</div></div>`;});const domQ=phases.map(p=>{const keys=[...phaseSel[p]];if(!keys.length)return null;const count={HL:0,HH:0,LH:0,LL:0};keys.forEach(k=>{const info=getMoodInfo(k);if(info)count[info.q]++;});return Object.entries(count).sort((a,b)=>b[1]-a[1])[0][0];});const arc=describeArc(domQ[0],domQ[1],domQ[2]);if(arc)html+=`<div class="flow-arc">✦ ${arc}</div>`;el.innerHTML=html;}
 function describeArc(b,d,a){if(!b&&!d&&!a)return null;const seq=[b,d,a].filter(Boolean);if(seq[0]==='HH'&&seq[seq.length-1]==='LH')return'從高昂期待，沉澱為平靜滿足——這是一趟充實的旅程';if(seq[0]==='HL'&&seq[seq.length-1]==='LH')return'從緊繃壓力，走到放鬆平和——你撐過來了';if(seq[0]==='HL'&&seq[seq.length-1]==='HH')return'從焦慮出發，最終轉化為喜悅——跨越了挑戰';if(seq[0]==='HH'&&seq[seq.length-1]==='HH')return'始終保持在高能量愉悅的狀態——這件事給你很多能量';if(seq.includes('LL')&&seq[seq.length-1]!=='LL')return'中間有低谷，但你走出來了——韌性值得被看見';if(seq[seq.length-1]==='LL')return'結尾落在低能量低愉悅——這件事可能還有些未消化的情緒';if(seq[0]==='LL'&&seq[seq.length-1]==='HH')return'從低點出發，逐漸找回能量——這是一段很有力量的轉化';return'情緒在不同象限間流動，這件事帶來了多層次的感受';}
-function loadBreakdown(){const idx=document.getElementById('bd-event-sel').value;if(idx===''){document.getElementById('bd-panel').style.display='none';return;}currentBdIdx=parseInt(idx);document.getElementById('bd-panel').style.display='block';const bd=state.breakdowns[currentBdIdx]||{};phaseSel={before:new Set(bd.moodBefore||[]),during:new Set(bd.moodDuring||[]),after:new Set(bd.moodAfter||[])};selVals=bd.values||[];selCont=bd.continue||'';document.getElementById('bd-why').value=bd.why||'';document.getElementById('bd-reflection').value=bd.reflection||'';currentPhase='before';['before','during','after'].forEach(p=>document.getElementById('tab-'+p).classList.toggle('active',p==='before'));document.getElementById('phase-hint').textContent=PHASE_HINTS['before'];updateCounts();buildMoodTable();updateFlowViz();document.querySelectorAll('#value-tags .tag').forEach(t=>{const a=selVals.includes(t.textContent);t.dataset.active=a?'1':'';t.style.background=a?'#EEEDFE':'';t.style.color=a?'#3C3489':'';t.style.borderColor=a?'#534AB7':'';});document.querySelectorAll('#continue-tags .tag').forEach(t=>{const a=t.textContent===selCont;t.style.background=a?'#EEEDFE':'';t.style.color=a?'#3C3489':'';t.style.borderColor=a?'#534AB7':'';});document.getElementById('bd-saved-msg').style.display='none';}
-function saveBreakdown(){if(currentBdIdx===null)return;state.breakdowns[currentBdIdx]={moodBefore:[...phaseSel.before],moodDuring:[...phaseSel.during],moodAfter:[...phaseSel.after],values:selVals,why:document.getElementById('bd-why').value,reflection:document.getElementById('bd-reflection').value,continue:selCont};saveState();renderEvents();renderDashboard();renderNextQ();const msg=document.getElementById('bd-saved-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);}
-function selTag(el,group){if(group==='val'){const active=!el.dataset.active;el.dataset.active=active?'1':'';el.style.background=active?'#EEEDFE':'';el.style.color=active?'#3C3489':'';el.style.borderColor=active?'#534AB7':'';const v=el.textContent;if(selVals.includes(v))selVals=selVals.filter(x=>x!==v);else selVals.push(v);}else if(group==='cont'){document.querySelectorAll('#continue-tags .tag').forEach(t=>{t.style.background='';t.style.color='';t.style.borderColor='';});el.style.background='#EEEDFE';el.style.color='#3C3489';el.style.borderColor='#534AB7';selCont=el.textContent;}}
+
+function loadBreakdown(){
+  const idx=document.getElementById('bd-event-sel').value;if(idx===''){document.getElementById('bd-panel').style.display='none';return;}
+  currentBdIdx=parseInt(idx);document.getElementById('bd-panel').style.display='block';
+  const bd=qState().breakdowns[currentBdIdx]||{};
+  phaseSel={before:new Set(bd.moodBefore||[]),during:new Set(bd.moodDuring||[]),after:new Set(bd.moodAfter||[])};
+  selVals=bd.values||[];selCont=bd.continue||'';
+  document.getElementById('bd-why').value=bd.why||'';document.getElementById('bd-reflection').value=bd.reflection||'';
+  currentPhase='before';['before','during','after'].forEach(p=>document.getElementById('tab-'+p).classList.toggle('active',p==='before'));
+  document.getElementById('phase-hint').textContent=PHASE_HINTS['before'];
+  updateCounts();buildMoodTable();updateFlowViz();renderValueTags();
+  document.querySelectorAll('#continue-tags .tag').forEach(t=>{const a=t.textContent===selCont;t.style.background=a?'#EEEDFE':'';t.style.color=a?'#3C3489':'';t.style.borderColor=a?'#534AB7':'';});
+  document.getElementById('bd-saved-msg').style.display='none';
+}
+function saveBreakdown(){
+  if(currentBdIdx===null)return;
+  qState().breakdowns[currentBdIdx]={moodBefore:[...phaseSel.before],moodDuring:[...phaseSel.during],moodAfter:[...phaseSel.after],values:selVals,why:document.getElementById('bd-why').value,reflection:document.getElementById('bd-reflection').value,continue:selCont};
+  saveState();renderEvents();renderDashboard();renderNextQ();
+  const msg=document.getElementById('bd-saved-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);
+}
 
 function renderDashboard(){
-  document.getElementById('stat-grid').innerHTML=`<div class="stat-card"><div class="stat-num">${state.events.length}</div><div class="stat-lbl">記錄的事件</div></div><div class="stat-card"><div class="stat-num">${Object.keys(state.breakdowns).length}</div><div class="stat-lbl">已拆解</div></div><div class="stat-card"><div class="stat-num">${state.events.reduce((s,e)=>s+e.energy,0)}</div><div class="stat-lbl">精力總分</div></div>`;
-  const catMap={};state.events.forEach(ev=>{catMap[ev.cat]=(catMap[ev.cat]||0)+ev.energy;});const maxCat=Math.max(1,...Object.values(catMap));
+  const qs=qState();
+  document.getElementById('stat-grid').innerHTML=`<div class="stat-card"><div class="stat-num">${qs.events.length}</div><div class="stat-lbl">記錄的事件</div></div><div class="stat-card"><div class="stat-num">${Object.keys(qs.breakdowns).length}</div><div class="stat-lbl">已拆解</div></div><div class="stat-card"><div class="stat-num">${qs.events.reduce((s,e)=>s+e.energy,0)}</div><div class="stat-lbl">精力總分</div></div>`;
+  const catMap={};qs.events.forEach(ev=>{catMap[ev.cat]=(catMap[ev.cat]||0)+ev.energy;});const maxCat=Math.max(1,...Object.values(catMap));
   document.getElementById('cat-bars').innerHTML=Object.keys(catMap).length?Object.entries(catMap).sort((a,b)=>b[1]-a[1]).map(([cat,val])=>{const c=catByName(cat);return`<div class="bar-row"><div class="bar-label">${cat}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(val/maxCat*100)}%;background:${c.bd};"></div></div><div class="bar-val">${val}</div></div>`;}).join(''):'<div class="empty-hint">新增事件後顯示</div>';
-  const qCount={HL:0,HH:0,LH:0,LL:0};Object.values(state.breakdowns).forEach(bd=>{['moodBefore','moodDuring','moodAfter'].forEach(k=>{(bd[k]||[]).forEach(key=>{const[ri,ci]=key.split('_').map(Number);const cell=MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];if(cell)qCount[cell.q]++;});});});
+  const qCount={HL:0,HH:0,LH:0,LL:0};Object.values(qs.breakdowns).forEach(bd=>{['moodBefore','moodDuring','moodAfter'].forEach(k=>{(bd[k]||[]).forEach(key=>{const[ri,ci]=key.split('_').map(Number);const cell=MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];if(cell)qCount[cell.q]++;});});});
   ['HL','HH','LH','LL'].forEach(q=>{document.getElementById('q-'+q).textContent=qCount[q]||0;});
-  const valMap={};Object.values(state.breakdowns).forEach(bd=>{(bd.values||[]).forEach(v=>{valMap[v]=(valMap[v]||0)+1;});});
+  const valMap={};Object.values(qs.breakdowns).forEach(bd=>{(bd.values||[]).forEach(v=>{valMap[v]=(valMap[v]||0)+1;});});
   const sorted=Object.entries(valMap).sort((a,b)=>b[1]-a[1]);
   document.getElementById('value-cloud').innerHTML=sorted.length?sorted.map(([v,cnt],i)=>`<span class="kw" style="background:${VAL_C[i%VAL_C.length]}20;color:${VAL_C[i%VAL_C.length]};font-size:${12+cnt*2}px;">${v}${cnt>1?' ×'+cnt:''}</span>`).join(''):'<div class="empty-hint">完成情緒拆解後顯示</div>';
   const catEntries=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);const ins=[];
@@ -614,15 +646,16 @@ function renderDashboard(){
   document.getElementById('insights-box').innerHTML=ins.length?ins.map(t=>`<div class="insight-box"><div style="font-size:13px;">${t}</div></div>`).join(''):'<div class="empty-hint">完成更多事件拆解後，這裡會出現你的洞察</div>';
 }
 function renderNextQ(){
-  const ci=[],pi=[];Object.entries(state.breakdowns).forEach(([i,bd])=>{const ev=state.events[parseInt(i)];if(!ev)return;if(bd.continue==='繼續做'||bd.continue==='調整做')ci.push({title:ev.title,mode:bd.continue});else if(bd.continue==='暫停放下')pi.push(ev.title);});
+  const qs=qState();const ci=[],pi=[];
+  Object.entries(qs.breakdowns).forEach(([i,bd])=>{const ev=qs.events[parseInt(i)];if(!ev)return;if(bd.continue==='繼續做'||bd.continue==='調整做')ci.push({title:ev.title,mode:bd.continue});else if(bd.continue==='暫停放下')pi.push(ev.title);});
   document.getElementById('continue-list').innerHTML=ci.length?ci.map(x=>`<div class="next-item"><div class="next-dot" style="background:#1D9E75;"></div><div style="font-size:14px;color:#085041;">${x.title}${x.mode==='調整做'?' <span style="font-size:11px;">(調整)</span>':''}</div></div>`).join(''):'<div style="font-size:12px;color:#085041;opacity:0.5;">完成拆解後自動填入</div>';
   document.getElementById('pause-list').innerHTML=pi.length?pi.map(t=>`<div class="next-item"><div class="next-dot" style="background:#BA7517;"></div><div style="font-size:14px;color:#633806;">${t}</div></div>`).join(''):'<div style="font-size:12px;color:#633806;opacity:0.5;">完成拆解後自動填入</div>';
-  document.getElementById('idea-list').innerHTML=state.ideas.length?state.ideas.map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
-  const el=document.getElementById('nq-intention');if(el&&state.intention)el.value=state.intention;
+  document.getElementById('idea-list').innerHTML=qs.ideas.length?qs.ideas.map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
+  const el=document.getElementById('nq-intention');if(el)el.value=qs.intention||'';
 }
-function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;state.ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
-function delIdea(i){state.ideas.splice(i,1);saveState();renderNextQ();}
-function saveIntention(){state.intention=document.getElementById('nq-intention').value;saveState();}
+function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;qState().ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
+function delIdea(i){qState().ideas.splice(i,1);saveState();renderNextQ();}
+function saveIntention(){qState().intention=document.getElementById('nq-intention').value;saveState();}
 function showSection(name,btn){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
