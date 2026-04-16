@@ -4,7 +4,6 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 <title>2026年四季回顧紀錄</title>
 <style>
 :root {
@@ -23,8 +22,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;ba
 .header{background:var(--bg);padding:16px 20px 12px;border-bottom:0.5px solid var(--border);position:sticky;top:0;z-index:100;}
 .header-title{font-size:17px;font-weight:600;color:var(--text);}
 .header-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+.header-user{font-size:11px;color:var(--purple);margin-top:3px;display:flex;align-items:center;gap:8px;}
+.btn-signout{font-size:11px;color:var(--text3);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-top:0.5px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom);}
-.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;cursor:pointer;gap:3px;border:none;background:none;color:var(--text3);font-size:10px;transition:color 0.15s;}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;cursor:pointer;gap:3px;border:none;background:none;color:var(--text3);font-size:10px;}
 .nav-item.active{color:var(--purple);}
 .nav-icon{font-size:20px;line-height:1;}
 .section{display:none;padding:16px 16px 0;}
@@ -62,13 +63,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .btn-primary{background:var(--purple);color:#fff;}
 .btn-ghost{background:var(--bg2);color:var(--text2);border:0.5px solid var(--border2);}
 .btn-sm{padding:7px 14px;font-size:13px;border-radius:var(--radius-sm);cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
-
-/* Quarter selector */
 .quarter-selector{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .quarter-btn{padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);font-family:inherit;}
 .quarter-btn.active{background:var(--purple);color:#fff;border-color:var(--purple);font-weight:500;}
-
-/* Event list */
 .event-item{background:var(--bg);border-radius:var(--radius);margin-bottom:10px;border:0.5px solid var(--border);overflow:hidden;}
 .event-header{padding:12px 14px;display:flex;justify-content:space-between;align-items:flex-start;}
 .event-title-text{font-size:15px;font-weight:500;color:var(--text);}
@@ -78,21 +75,16 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .badge-date{font-size:11px;color:var(--text3);}
 .event-actions{display:flex;gap:4px;flex-shrink:0;margin-left:8px;}
 .icon-btn{font-size:16px;cursor:pointer;color:var(--text3);border:none;background:none;padding:4px 6px;border-radius:6px;}
-.icon-btn:hover{background:var(--bg2);}
 .edit-form{border-top:0.5px solid var(--border);padding:14px;display:none;}
 .edit-form.open{display:block;}
 .edit-actions{display:flex;gap:8px;margin-top:4px;}
 .edit-actions .btn{width:auto;padding:10px 18px;}
-
-/* Value tags */
 .val-tag{padding:5px 11px;border-radius:20px;font-size:13px;cursor:pointer;border:0.5px solid var(--border2);background:var(--bg2);color:var(--text2);display:inline-flex;align-items:center;gap:3px;font-family:inherit;}
 .val-tag.sel{background:var(--purple-light);color:var(--purple-dark);border-color:var(--purple);}
-.val-del{font-size:10px;opacity:0.3;line-height:1;background:none;border:none;padding:0;margin:0;color:inherit;cursor:pointer;display:inline-flex;align-items:center;-webkit-appearance:none;}
+.val-del{font-size:10px;opacity:0.3;line-height:1;background:none;border:none;padding:0;margin:0;color:inherit;cursor:pointer;-webkit-appearance:none;}
 .val-del:hover{opacity:0.75;}
 .add-val-row{display:flex;gap:8px;align-items:center;margin-top:8px;}
 .add-val-row input{flex:1;margin-bottom:0;}
-
-/* Phase tabs */
 .phase-tabs{display:flex;border:0.5px solid var(--border2);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:12px;}
 .phase-tab{flex:1;padding:10px 4px;text-align:center;font-size:13px;cursor:pointer;background:var(--bg2);color:var(--text2);border:none;border-right:0.5px solid var(--border);font-family:inherit;}
 .phase-tab:last-child{border-right:none;}
@@ -112,7 +104,6 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .mood-wrap{position:relative;display:inline-block;min-width:100%;}
 .mood-table{border-collapse:collapse;width:100%;table-layout:fixed;min-width:320px;}
 .mood-cell{padding:5px 1px;font-size:10px;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,0.3);line-height:1.25;vertical-align:middle;position:relative;user-select:none;-webkit-user-select:none;}
-.mood-cell:active{filter:brightness(0.85);}
 .mood-overlay{position:absolute;top:0;left:0;pointer-events:none;}
 .mood-axis-bot{display:flex;justify-content:space-between;font-size:11px;color:var(--text3);margin-top:4px;}
 .flow-viz{background:var(--bg2);border-radius:var(--radius-sm);padding:12px;margin-top:12px;}
@@ -132,7 +123,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .bar-row{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
 .bar-label{font-size:11px;color:var(--text2);width:60px;text-align:right;flex-shrink:0;}
 .bar-track{flex:1;height:12px;background:var(--bg2);border-radius:6px;overflow:hidden;}
-.bar-fill{height:100%;border-radius:6px;transition:width 0.4s;}
+.bar-fill{height:100%;border-radius:6px;}
 .bar-val{font-size:11px;color:var(--text3);width:20px;}
 .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
 .q-box{text-align:center;padding:8px 4px;border-radius:var(--radius-sm);}
@@ -147,13 +138,49 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
 .next-dot{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0;}
 .empty-hint{font-size:13px;color:var(--text3);padding:8px 0;}
 .save-msg{font-size:12px;color:#0F6E56;margin-left:10px;display:none;}
+
+/* Login screen */
+#login-screen{position:fixed;inset:0;background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:200;padding:2rem;}
+.login-card{background:var(--bg);border-radius:var(--radius);padding:2rem;max-width:320px;width:100%;text-align:center;border:0.5px solid var(--border);}
+.login-title{font-size:20px;font-weight:600;color:var(--text);margin-bottom:8px;}
+.login-sub{font-size:14px;color:var(--text2);margin-bottom:24px;line-height:1.5;}
+.btn-google{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:12px;border-radius:var(--radius-sm);border:0.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:15px;cursor:pointer;font-family:inherit;font-weight:500;}
+.btn-google:hover{background:var(--bg2);}
+.btn-google svg{width:20px;height:20px;flex-shrink:0;}
+.sync-indicator{font-size:11px;color:var(--text3);margin-top:4px;}
+.sync-indicator.syncing{color:var(--purple);}
+.sync-indicator.error{color:#E24B4A;}
 </style>
 </head>
 <body>
-<div class="app">
+
+<!-- Login Screen -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="login-title">2026年四季回顧</div>
+    <div class="login-sub">登入後，你的資料會自動在所有裝置上同步</div>
+    <button class="btn-google" onclick="signInWithGoogle()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      使用 Google 帳號登入
+    </button>
+    <div id="login-status" style="font-size:12px;color:var(--text3);margin-top:12px;min-height:16px;"></div>
+  </div>
+</div>
+
+<div class="app" id="main-app" style="display:none;">
   <div class="header">
     <div class="header-title">2026年四季回顧紀錄</div>
     <div class="header-sub">記錄事件 → 情緒流動 → 看見模式 → 決定下一步</div>
+    <div class="header-user">
+      <span id="user-email"></span>
+      <button class="btn-signout" onclick="signOut()">登出</button>
+      <span class="sync-indicator" id="sync-indicator"></span>
+    </div>
   </div>
 
   <div id="sec-events" class="section active">
@@ -289,15 +316,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
     </div>
     <div class="section-title" id="next-title">Q1 → 下一季的選擇</div>
     <div class="section-sub">帶著這幾個月的覺察，決定接下來要帶走什麼、放下什麼</div>
-    <div class="next-col" style="background:#E1F5EE;border-color:#9FE1CB;">
-      <div class="next-col-title" style="color:#085041;">繼續 ✓</div><div id="continue-list"></div>
-    </div>
-    <div class="next-col" style="background:#FAEEDA;border-color:#FAC775;">
-      <div class="next-col-title" style="color:#633806;">暫停 ⏸</div><div id="pause-list"></div>
-    </div>
-    <div class="next-col" style="background:#EEEDFE;border-color:#AFA9EC;">
-      <div class="next-col-title" style="color:#26215C;">新靈感 ✦</div><div id="idea-list"></div>
-    </div>
+    <div class="next-col" style="background:#E1F5EE;border-color:#9FE1CB;"><div class="next-col-title" style="color:#085041;">繼續 ✓</div><div id="continue-list"></div></div>
+    <div class="next-col" style="background:#FAEEDA;border-color:#FAC775;"><div class="next-col-title" style="color:#633806;">暫停 ⏸</div><div id="pause-list"></div></div>
+    <div class="next-col" style="background:#EEEDFE;border-color:#AFA9EC;"><div class="next-col-title" style="color:#26215C;">新靈感 ✦</div><div id="idea-list"></div></div>
     <div class="card">
       <span class="label">新增靈感</span>
       <input type="text" id="idea-input" class="field-mb" placeholder="下一季想要嘗試的新事物..." />
@@ -310,12 +331,102 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;heigh
   </div>
 </div>
 
-<div class="bottom-nav">
+<div class="bottom-nav" id="bottom-nav" style="display:none;">
   <button class="nav-item active" onclick="showSection('events',this)"><span class="nav-icon">📝</span>事件</button>
   <button class="nav-item" onclick="showSection('breakdown',this)"><span class="nav-icon">🎨</span>情緒流動</button>
   <button class="nav-item" onclick="showSection('dashboard',this)"><span class="nav-icon">📊</span>總覽</button>
   <button class="nav-item" onclick="showSection('nextq',this)"><span class="nav-icon">🌱</span>下一季</button>
 </div>
+
+<!-- Firebase -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut as fbSignOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyD4tI8lnF_CDT9WlPvGA1_z6oDb1JLapCU",
+  authDomain: "review-your-2026.firebaseapp.com",
+  databaseURL: "https://review-your-2026-default-rtdb.firebaseio.com",
+  projectId: "review-your-2026",
+  storageBucket: "review-your-2026.firebasestorage.app",
+  messagingSenderId: "166756715449",
+  appId: "1:166756715449:web:3ccc53ffdc57b2fc16c468",
+  measurementId: "G-EL453ES3PJ"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const provider = new GoogleAuthProvider();
+
+let currentUser = null;
+let dbRef = null;
+let saveTimeout = null;
+
+window.signInWithGoogle = async () => {
+  document.getElementById('login-status').textContent = '登入中...';
+  try {
+    await signInWithPopup(auth, provider);
+  } catch(e) {
+    document.getElementById('login-status').textContent = '登入失敗，請再試一次';
+  }
+};
+
+window.signOut = async () => {
+  await fbSignOut(auth);
+};
+
+function setSyncStatus(status) {
+  const el = document.getElementById('sync-indicator');
+  if (status === 'syncing') { el.textContent = '同步中...'; el.className = 'sync-indicator syncing'; }
+  else if (status === 'ok') { el.textContent = '已同步 ✓'; el.className = 'sync-indicator'; setTimeout(()=>{el.textContent='';}, 2000); }
+  else if (status === 'error') { el.textContent = '同步失敗'; el.className = 'sync-indicator error'; }
+}
+
+window._saveToFirebase = function() {
+  if (!dbRef) return;
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    setSyncStatus('syncing');
+    try {
+      await set(dbRef, window._appState);
+      setSyncStatus('ok');
+    } catch(e) {
+      setSyncStatus('error');
+    }
+  }, 800);
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    currentUser = user;
+    document.getElementById('user-email').textContent = user.email;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('main-app').style.display = 'block';
+    document.getElementById('bottom-nav').style.display = 'flex';
+
+    dbRef = ref(db, 'users/' + user.uid + '/reviewData');
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        window._appState = data;
+        if (window._appReady) window.renderAll();
+      } else {
+        window._appState = window._defaultState();
+        if (window._appReady) window.renderAll();
+      }
+      window._appReady = true;
+    }, { onlyOnce: false });
+  } else {
+    currentUser = null;
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('main-app').style.display = 'none';
+    document.getElementById('bottom-nav').style.display = 'none';
+    window._appReady = false;
+  }
+});
+</script>
 
 <script>
 const ALL_CATS=[
@@ -353,29 +464,26 @@ const PHASE_LABELS={before:'開始前',during:'經歷中',after:'事後'};
 const PHASE_HINTS={before:'點選代表「開始前」的情緒，可多選',during:'點選代表「經歷中」的情緒，可多選',after:'點選代表「事後」的情緒，可多選'};
 const VAL_C=['#534AB7','#1D9E75','#185FA5','#BA7517','#D4537E','#639922','#0F6E56','#993C1D','#4a148c','#004d40','#f57f17','#880e4f'];
 
-function catByName(n){return ALL_CATS.find(c=>c.name===n)||ALL_CATS[ALL_CATS.length-1];}
-
-let currentQ='Q1';
-let state={
+window._defaultState = () => ({
   Q1:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q2:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q3:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
   Q4:{events:[],breakdowns:{},ideas:[],intention:'',customVals:[]},
-};
-function qState(){return state[currentQ];}
-function loadState(){try{const s=localStorage.getItem('review_2026_final');if(s)state=JSON.parse(s);}catch(e){}buildCatTags();renderAll();}
-function saveState(){try{localStorage.setItem('review_2026_final',JSON.stringify(state));}catch(e){}}
-function renderAll(){renderEvents();renderEventSel();renderDashboard();renderNextQ();}
+});
+window._appState = window._defaultState();
+window._appReady = false;
 
+function catByName(n){return ALL_CATS.find(c=>c.name===n)||ALL_CATS[ALL_CATS.length-1];}
+let currentQ='Q1';
+function qState(){return window._appState[currentQ];}
+function saveState(){window._saveToFirebase();}
+
+window.renderAll = function(){renderEvents();renderEventSel();renderDashboard();renderNextQ();};
 const Q_LABELS={Q1:'Q1 1-3月',Q2:'Q2 4-6月',Q3:'Q3 7-9月',Q4:'Q4 10-12月'};
+
 function switchQuarter(q){
   currentQ=q;
-  ['','b','d','n'].forEach(sfx=>{
-    ['Q1','Q2','Q3','Q4'].forEach(qq=>{
-      const el=document.getElementById(`q-btn-${qq}${sfx?'-'+sfx:''}`);
-      if(el)el.classList.toggle('active',qq===q);
-    });
-  });
+  ['','b','d','n'].forEach(sfx=>{['Q1','Q2','Q3','Q4'].forEach(qq=>{const el=document.getElementById(`q-btn-${qq}${sfx?'-'+sfx:''}`);if(el)el.classList.toggle('active',qq===q);});});
   const ql=Q_LABELS[q];
   document.getElementById('ev-section-title').textContent=ql+' 事件記錄';
   document.getElementById('dash-title').textContent=ql+' 模式總覽';
@@ -459,42 +567,32 @@ function refreshSubTags(suffix){
     if(subs.has(v))applyTagStyle(el,c);else{el.style.background='';el.style.color='';el.style.borderColor='';}
   });
 }
-
-// Value tags
 function allVals(){return[...DEFAULT_VALUES,...(qState().customVals||[])];}
 function renderValueTags(){
   document.getElementById('value-tags').innerHTML=allVals().map(v=>{
-    const isSel=selVals.includes(v);
-    const isCustom=!DEFAULT_VALUES.includes(v);
+    const isSel=selVals.includes(v);const isCustom=!DEFAULT_VALUES.includes(v);
     return`<span class="val-tag ${isSel?'sel':''}" onclick="toggleVal('${v}')">${v}${isCustom?`<button class="val-del" onclick="delCustomVal(event,'${v}')">×</button>`:''}</span>`;
   }).join('');
 }
-function toggleVal(v){
-  if(selVals.includes(v))selVals=selVals.filter(x=>x!==v);else selVals.push(v);
-  renderValueTags();
-}
+function toggleVal(v){if(selVals.includes(v))selVals=selVals.filter(x=>x!==v);else selVals.push(v);renderValueTags();}
 function addCustomVal(){
   const input=document.getElementById('new-val-input');const v=input.value.trim();
-  if(!v)return;
-  if(allVals().includes(v)){alert('已有相同的項目');return;}
+  if(!v)return;if(allVals().includes(v)){alert('已有相同的項目');return;}
   if(!qState().customVals)qState().customVals=[];
-  qState().customVals.push(v);selVals.push(v);
-  input.value='';saveState();renderValueTags();
+  qState().customVals.push(v);selVals.push(v);input.value='';saveState();renderValueTags();
 }
 function delCustomVal(e,v){
   e.stopPropagation();
   qState().customVals=(qState().customVals||[]).filter(x=>x!==v);
-  selVals=selVals.filter(x=>x!==v);
-  saveState();renderValueTags();
+  selVals=selVals.filter(x=>x!==v);saveState();renderValueTags();
 }
 function selContTag(el){
   document.querySelectorAll('#continue-tags .tag').forEach(t=>{t.style.background='';t.style.color='';t.style.borderColor='';});
-  el.style.background='#EEEDFE';el.style.color='#3C3489';el.style.borderColor='#534AB7';
-  selCont=el.textContent;
+  el.style.background='#EEEDFE';el.style.color='#3C3489';el.style.borderColor='#534AB7';selCont=el.textContent;
 }
-
 function addEvent(){
   const title=document.getElementById('ev-title').value.trim();if(!title){alert('請輸入事件名稱');return;}
+  if(!qState().events)qState().events=[];
   qState().events.push({title,dateInfo:getDateVal(''),cat:addMainCat||'其他',subCats:[...addSubCats],energy:parseInt(document.getElementById('ev-energy').value),note:document.getElementById('ev-note').value.trim()});
   saveState();
   document.getElementById('ev-title').value='';
@@ -508,7 +606,7 @@ function addEvent(){
 function delEvent(i){
   if(!confirm('確定刪除這個事件？'))return;
   qState().events.splice(i,1);
-  const nb={};Object.keys(qState().breakdowns).forEach(k=>{const ki=parseInt(k);if(ki<i)nb[k]=qState().breakdowns[k];else if(ki>i)nb[ki-1]=qState().breakdowns[k];});
+  const nb={};Object.keys(qState().breakdowns||{}).forEach(k=>{const ki=parseInt(k);if(ki<i)nb[k]=qState().breakdowns[k];else if(ki>i)nb[ki-1]=qState().breakdowns[k];});
   qState().breakdowns=nb;saveState();renderAll();
 }
 function toggleEdit(i){
@@ -541,11 +639,11 @@ function saveEdit(i){
   saveState();renderEvents();renderEventSel();renderDashboard();
 }
 function cancelEdit(i){document.getElementById(`edit-form-${i}`)?.classList.remove('open');}
-
 function renderEvents(){
   const el=document.getElementById('event-list');
-  if(!qState().events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
-  el.innerHTML=qState().events.map((ev,i)=>{
+  const events=qState().events||[];
+  if(!events.length){el.innerHTML='<div class="empty-hint">還沒有事件，新增你的第一個！</div>';return;}
+  el.innerHTML=events.map((ev,i)=>{
     const c=catByName(ev.cat);
     return`<div class="event-item">
       <div class="event-header">
@@ -556,7 +654,7 @@ function renderEvents(){
             <span class="badge-main" style="background:${c.bg};color:${c.fg};">${ev.cat}</span>
             ${(ev.subCats||[]).map(s=>{const sc=catByName(s);return`<span class="badge-sub" style="background:${sc.bg}60;color:${sc.fg};border-color:${sc.bd}60;">${s}</span>`;}).join('')}
             <span style="font-size:11px;color:var(--text3)">${'●'.repeat(ev.energy)}${'○'.repeat(5-ev.energy)}</span>
-            ${qState().breakdowns[i]?'<span style="color:#0F6E56;font-size:11px;">✓ 已拆解</span>':''}
+            ${(qState().breakdowns||{})[i]?'<span style="color:#0F6E56;font-size:11px;">✓ 已拆解</span>':''}
           </div>
           ${ev.note?`<div style="font-size:12px;color:var(--text3);margin-top:4px;">${ev.note}</div>`:''}
         </div>
@@ -590,12 +688,11 @@ function renderEvents(){
     </div>`;
   }).join('');
 }
-
 function renderEventSel(){
   const sel=document.getElementById('bd-event-sel');const cur=sel.value;
-  sel.innerHTML='<option value="">— 選擇事件 —</option>'+qState().events.map((ev,i)=>{const d=ev.dateInfo||{};const prefix=d.mode==='single'&&d.date?`[${d.date}] `:d.mode==='range'&&d.from?`[${d.from}] `:'';return`<option value="${i}" ${cur==i?'selected':''}>${prefix}${ev.title}</option>`;}).join('');
+  const events=qState().events||[];
+  sel.innerHTML='<option value="">— 選擇事件 —</option>'+events.map((ev,i)=>{const d=ev.dateInfo||{};const prefix=d.mode==='single'&&d.date?`[${d.date}] `:d.mode==='range'&&d.from?`[${d.from}] `:'';return`<option value="${i}" ${cur==i?'selected':''}>${prefix}${ev.title}</option>`;}).join('');
 }
-
 function switchPhase(p){currentPhase=p;['before','during','after'].forEach(x=>document.getElementById('tab-'+x).classList.toggle('active',x===p));document.getElementById('phase-hint').textContent=PHASE_HINTS[p];buildMoodTable();}
 function updateCounts(){['before','during','after'].forEach(p=>{document.getElementById('cnt-'+p).textContent=phaseSel[p].size;});}
 function buildMoodTable(){
@@ -608,11 +705,10 @@ function drawFlowArrows(){const canvas=document.getElementById('flow-canvas');co
 function getMoodInfo(key){const[ri,ci]=key.split('_').map(Number);return MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];}
 function updateFlowViz(){const el=document.getElementById('flow-viz');const phases=['before','during','after'];if(!phases.some(p=>phaseSel[p].size>0)){el.innerHTML='<div class="flow-empty">開始選情緒後，這裡會顯示你的情緒弧線</div>';return;}let html='';phases.forEach(p=>{const keys=[...phaseSel[p]];const pills=keys.map(k=>{const info=getMoodInfo(k);return info?`<span class="flow-pill" style="background:${Q_SEL[info.q]};">${info.t}</span>`:''}).join('');html+=`<div class="flow-phase-row"><div class="flow-phase-label" style="color:${PHASE_COLORS[p]};">${PHASE_LABELS[p]}</div><div class="flow-pills">${pills||'<span style="font-size:12px;color:var(--text3);">未選</span>'}</div></div>`;});const domQ=phases.map(p=>{const keys=[...phaseSel[p]];if(!keys.length)return null;const count={HL:0,HH:0,LH:0,LL:0};keys.forEach(k=>{const info=getMoodInfo(k);if(info)count[info.q]++;});return Object.entries(count).sort((a,b)=>b[1]-a[1])[0][0];});const arc=describeArc(domQ[0],domQ[1],domQ[2]);if(arc)html+=`<div class="flow-arc">✦ ${arc}</div>`;el.innerHTML=html;}
 function describeArc(b,d,a){if(!b&&!d&&!a)return null;const seq=[b,d,a].filter(Boolean);if(seq[0]==='HH'&&seq[seq.length-1]==='LH')return'從高昂期待，沉澱為平靜滿足——這是一趟充實的旅程';if(seq[0]==='HL'&&seq[seq.length-1]==='LH')return'從緊繃壓力，走到放鬆平和——你撐過來了';if(seq[0]==='HL'&&seq[seq.length-1]==='HH')return'從焦慮出發，最終轉化為喜悅——跨越了挑戰';if(seq[0]==='HH'&&seq[seq.length-1]==='HH')return'始終保持在高能量愉悅的狀態——這件事給你很多能量';if(seq.includes('LL')&&seq[seq.length-1]!=='LL')return'中間有低谷，但你走出來了——韌性值得被看見';if(seq[seq.length-1]==='LL')return'結尾落在低能量低愉悅——這件事可能還有些未消化的情緒';if(seq[0]==='LL'&&seq[seq.length-1]==='HH')return'從低點出發，逐漸找回能量——這是一段很有力量的轉化';return'情緒在不同象限間流動，這件事帶來了多層次的感受';}
-
 function loadBreakdown(){
   const idx=document.getElementById('bd-event-sel').value;if(idx===''){document.getElementById('bd-panel').style.display='none';return;}
   currentBdIdx=parseInt(idx);document.getElementById('bd-panel').style.display='block';
-  const bd=qState().breakdowns[currentBdIdx]||{};
+  const bd=(qState().breakdowns||{})[currentBdIdx]||{};
   phaseSel={before:new Set(bd.moodBefore||[]),during:new Set(bd.moodDuring||[]),after:new Set(bd.moodAfter||[])};
   selVals=bd.values||[];selCont=bd.continue||'';
   document.getElementById('bd-why').value=bd.why||'';document.getElementById('bd-reflection').value=bd.reflection||'';
@@ -624,19 +720,19 @@ function loadBreakdown(){
 }
 function saveBreakdown(){
   if(currentBdIdx===null)return;
+  if(!qState().breakdowns)qState().breakdowns={};
   qState().breakdowns[currentBdIdx]={moodBefore:[...phaseSel.before],moodDuring:[...phaseSel.during],moodAfter:[...phaseSel.after],values:selVals,why:document.getElementById('bd-why').value,reflection:document.getElementById('bd-reflection').value,continue:selCont};
   saveState();renderEvents();renderDashboard();renderNextQ();
   const msg=document.getElementById('bd-saved-msg');msg.style.display='inline';setTimeout(()=>msg.style.display='none',2000);
 }
-
 function renderDashboard(){
-  const qs=qState();
-  document.getElementById('stat-grid').innerHTML=`<div class="stat-card"><div class="stat-num">${qs.events.length}</div><div class="stat-lbl">記錄的事件</div></div><div class="stat-card"><div class="stat-num">${Object.keys(qs.breakdowns).length}</div><div class="stat-lbl">已拆解</div></div><div class="stat-card"><div class="stat-num">${qs.events.reduce((s,e)=>s+e.energy,0)}</div><div class="stat-lbl">精力總分</div></div>`;
-  const catMap={};qs.events.forEach(ev=>{catMap[ev.cat]=(catMap[ev.cat]||0)+ev.energy;});const maxCat=Math.max(1,...Object.values(catMap));
+  const qs=qState();const events=qs.events||[];const breakdowns=qs.breakdowns||{};
+  document.getElementById('stat-grid').innerHTML=`<div class="stat-card"><div class="stat-num">${events.length}</div><div class="stat-lbl">記錄的事件</div></div><div class="stat-card"><div class="stat-num">${Object.keys(breakdowns).length}</div><div class="stat-lbl">已拆解</div></div><div class="stat-card"><div class="stat-num">${events.reduce((s,e)=>s+e.energy,0)}</div><div class="stat-lbl">精力總分</div></div>`;
+  const catMap={};events.forEach(ev=>{catMap[ev.cat]=(catMap[ev.cat]||0)+ev.energy;});const maxCat=Math.max(1,...Object.values(catMap));
   document.getElementById('cat-bars').innerHTML=Object.keys(catMap).length?Object.entries(catMap).sort((a,b)=>b[1]-a[1]).map(([cat,val])=>{const c=catByName(cat);return`<div class="bar-row"><div class="bar-label">${cat}</div><div class="bar-track"><div class="bar-fill" style="width:${Math.round(val/maxCat*100)}%;background:${c.bd};"></div></div><div class="bar-val">${val}</div></div>`;}).join(''):'<div class="empty-hint">新增事件後顯示</div>';
-  const qCount={HL:0,HH:0,LH:0,LL:0};Object.values(qs.breakdowns).forEach(bd=>{['moodBefore','moodDuring','moodAfter'].forEach(k=>{(bd[k]||[]).forEach(key=>{const[ri,ci]=key.split('_').map(Number);const cell=MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];if(cell)qCount[cell.q]++;});});});
+  const qCount={HL:0,HH:0,LH:0,LL:0};Object.values(breakdowns).forEach(bd=>{['moodBefore','moodDuring','moodAfter'].forEach(k=>{(bd[k]||[]).forEach(key=>{const[ri,ci]=key.split('_').map(Number);const cell=MOOD_ROWS[ri]&&MOOD_ROWS[ri][ci];if(cell)qCount[cell.q]++;});});});
   ['HL','HH','LH','LL'].forEach(q=>{document.getElementById('q-'+q).textContent=qCount[q]||0;});
-  const valMap={};Object.values(qs.breakdowns).forEach(bd=>{(bd.values||[]).forEach(v=>{valMap[v]=(valMap[v]||0)+1;});});
+  const valMap={};Object.values(breakdowns).forEach(bd=>{(bd.values||[]).forEach(v=>{valMap[v]=(valMap[v]||0)+1;});});
   const sorted=Object.entries(valMap).sort((a,b)=>b[1]-a[1]);
   document.getElementById('value-cloud').innerHTML=sorted.length?sorted.map(([v,cnt],i)=>`<span class="kw" style="background:${VAL_C[i%VAL_C.length]}20;color:${VAL_C[i%VAL_C.length]};font-size:${12+cnt*2}px;">${v}${cnt>1?' ×'+cnt:''}</span>`).join(''):'<div class="empty-hint">完成情緒拆解後顯示</div>';
   const catEntries=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);const ins=[];
@@ -646,14 +742,15 @@ function renderDashboard(){
   document.getElementById('insights-box').innerHTML=ins.length?ins.map(t=>`<div class="insight-box"><div style="font-size:13px;">${t}</div></div>`).join(''):'<div class="empty-hint">完成更多事件拆解後，這裡會出現你的洞察</div>';
 }
 function renderNextQ(){
-  const qs=qState();const ci=[],pi=[];
-  Object.entries(qs.breakdowns).forEach(([i,bd])=>{const ev=qs.events[parseInt(i)];if(!ev)return;if(bd.continue==='繼續做'||bd.continue==='調整做')ci.push({title:ev.title,mode:bd.continue});else if(bd.continue==='暫停放下')pi.push(ev.title);});
+  const qs=qState();const breakdowns=qs.breakdowns||{};const events=qs.events||[];
+  const ci=[],pi=[];
+  Object.entries(breakdowns).forEach(([i,bd])=>{const ev=events[parseInt(i)];if(!ev)return;if(bd.continue==='繼續做'||bd.continue==='調整做')ci.push({title:ev.title,mode:bd.continue});else if(bd.continue==='暫停放下')pi.push(ev.title);});
   document.getElementById('continue-list').innerHTML=ci.length?ci.map(x=>`<div class="next-item"><div class="next-dot" style="background:#1D9E75;"></div><div style="font-size:14px;color:#085041;">${x.title}${x.mode==='調整做'?' <span style="font-size:11px;">(調整)</span>':''}</div></div>`).join(''):'<div style="font-size:12px;color:#085041;opacity:0.5;">完成拆解後自動填入</div>';
   document.getElementById('pause-list').innerHTML=pi.length?pi.map(t=>`<div class="next-item"><div class="next-dot" style="background:#BA7517;"></div><div style="font-size:14px;color:#633806;">${t}</div></div>`).join(''):'<div style="font-size:12px;color:#633806;opacity:0.5;">完成拆解後自動填入</div>';
-  document.getElementById('idea-list').innerHTML=qs.ideas.length?qs.ideas.map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
+  document.getElementById('idea-list').innerHTML=(qs.ideas||[]).length?(qs.ideas||[]).map((idea,i)=>`<div class="next-item"><div class="next-dot" style="background:#534AB7;"></div><div style="font-size:14px;color:#26215C;flex:1;">${idea}</div><button onclick="delIdea(${i})" style="background:none;border:none;cursor:pointer;color:#888;font-size:14px;">×</button></div>`).join(''):'<div style="font-size:12px;color:#26215C;opacity:0.5;">在下方新增未來想嘗試的事</div>';
   const el=document.getElementById('nq-intention');if(el)el.value=qs.intention||'';
 }
-function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;qState().ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
+function addIdea(){const v=document.getElementById('idea-input').value.trim();if(!v)return;if(!qState().ideas)qState().ideas=[];qState().ideas.push(v);document.getElementById('idea-input').value='';saveState();renderNextQ();}
 function delIdea(i){qState().ideas.splice(i,1);saveState();renderNextQ();}
 function saveIntention(){qState().intention=document.getElementById('nq-intention').value;saveState();}
 function showSection(name,btn){
@@ -664,7 +761,7 @@ function showSection(name,btn){
   if(name==='dashboard')renderDashboard();
   window.scrollTo(0,0);
 }
-loadState();
+buildCatTags();
 </script>
 </body>
 </html>
